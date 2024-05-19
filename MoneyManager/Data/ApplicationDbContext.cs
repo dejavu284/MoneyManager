@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using MoneyManager.Models;
+
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
 
 namespace MoneyManager.Data
 {
@@ -89,7 +94,6 @@ namespace MoneyManager.Data
                 entity.HasOne(d => d.Account)
                     .WithMany(p => p.BankTransaction)
                     .HasForeignKey(d => d.AccountId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("bank_transaction_account_id_fkey");
 
                 entity.HasOne(d => d.Subcategory)
