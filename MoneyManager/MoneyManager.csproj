@@ -156,17 +156,18 @@
     </ApplicationDefinition>
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Data\DbContextSingleton.cs" />
-    <Compile Include="Data\Services\AccountRepository.cs" />
-    <Compile Include="Data\Services\BankTransactionRepository.cs" />
-    <Compile Include="Data\Services\CategoryRepository.cs" />
-    <Compile Include="Data\Services\CurrencyRepository.cs" />
+    <Compile Include="Data\Services\AccountService.cs" />
+    <Compile Include="Data\Services\BankTransactionService.cs" />
+    <Compile Include="Data\Services\CategoryService.cs" />
+    <Compile Include="Data\Services\CurrencyService.cs" />
     <Compile Include="Data\Services\DataService.cs" />
-    <Compile Include="Data\Services\DepositOperationRepository.cs" />
-    <Compile Include="Data\Services\DepositRepository.cs" />
-    <Compile Include="Data\Services\SubcategoryRepository.cs" />
+    <Compile Include="Data\Services\DepositOperationService.cs" />
+    <Compile Include="Data\Services\DepositService.cs" />
+    <Compile Include="Data\Services\SubcategoryService.cs" />
     <Compile Include="Models\ClosedDeposits.cs" />
     <Compile Include="Models\TotalDepositsLastMonth.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
+    <Compile Include="ViewModels\AddAccountViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\CreateDepositOperationViewModel.cs" />
     <Compile Include="ViewModels\CreateTransactionViewModel.cs" />
@@ -179,6 +180,9 @@
     <Compile Include="ViewModels\TransactionHistoryViewModel.cs" />
     <Compile Include="Views\AccountView.xaml.cs">
       <DependentUpon>AccountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddAccountView.xaml.cs">
+      <DependentUpon>AddAccountView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CategoryView.xaml.cs">
       <DependentUpon>CategoryView.xaml</DependentUpon>
@@ -204,6 +208,10 @@
     <Compile Include="Views\TransactionHistoryView.xaml.cs">
       <DependentUpon>TransactionHistoryView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\AddAccountView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

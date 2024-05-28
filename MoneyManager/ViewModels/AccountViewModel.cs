@@ -27,18 +27,33 @@ namespace MoneyManager.ViewModels
         public bool IsAccountSelected => SelectedAccount != null;
 
         public ICommand LoadAccountsCommand { get; }
-        public ICommand AddAccountCommand { get; }
+        public ICommand ShowAddAccountViewCommand { get; }
         public ICommand EditAccountCommand { get; }
         public ICommand DeleteAccountCommand { get; }
+
+        private object _currentViewModel;
+        public object CurrentViewModel
+        {
+            get => _currentViewModel;
+            set
+            {
+                _currentViewModel = value;
+                OnPropertyChanged(nameof(CurrentViewModel));
+            }
+        }
+
+        private AddAccountViewModel _addAccountViewModel;
 
         public AccountViewModel()
         {
             _accountService = new AccountService();
             Accounts = new ObservableCollection<Account>();
             LoadAccountsCommand = new RelayCommand(async _ => await LoadAccounts());
-            AddAccountCommand = new RelayCommand(async _ => await AddAccount());
+            ShowAddAccountViewCommand = new RelayCommand(_ => ShowAddAccountView());
             EditAccountCommand = new RelayCommand(async _ => await EditAccount(), _ => IsAccountSelected);
             DeleteAccountCommand = new RelayCommand(async _ => await DeleteAccount(), _ => IsAccountSelected);
+
+            _addAccountViewModel = new AddAccountViewModel(async () => await AddAccount());
 
             // Load accounts on initialization
             LoadAccounts().ConfigureAwait(false);
@@ -54,11 +69,19 @@ namespace MoneyManager.ViewModels
             }
         }
 
+        private void ShowAddAccountView()
+        {
+            CurrentViewModel = _addAccountViewModel;
+        }
+
         private async Task AddAccount()
         {
-            var newAccount = new Account { AccountBalance = 1000.00m, CurrencyId = 1 };
-            await _accountService.AddAsync(newAccount);
-            await LoadAccounts();
+            if (_addAccountViewModel.NewAccount != null)
+            {
+                await _accountService.AddAsync(_addAccountViewModel.NewAccount);
+                await LoadAccounts();
+                CurrentViewModel = null; // Hide AddAccountView
+            }
         }
 
         private async Task EditAccount()

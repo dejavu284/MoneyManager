@@ -7,8 +7,8 @@ namespace MoneyManager.Views
     {
         public AccountView()
         {
-            InitializeComponent();
             DataContext = new AccountViewModel();
+            InitializeComponent();
         }
     }
 }
