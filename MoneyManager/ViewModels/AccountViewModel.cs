@@ -12,6 +12,7 @@ namespace MoneyManager.ViewModels
     public class AccountViewModel : INotifyPropertyChanged
     {
         private readonly AccountRepository _accountRepository;
+        private readonly CurrencyRepository _currencyRepository;
         private ObservableCollection<Account> _accounts;
         private Account _selectedAccount;
         private object _currentViewModel;
@@ -54,7 +55,9 @@ namespace MoneyManager.ViewModels
 
         public AccountViewModel()
         {
-            _accountRepository = new AccountRepository(CreateDbContext());
+            var context = CreateDbContext();
+            _accountRepository = new AccountRepository(context);
+            _currencyRepository = new CurrencyRepository(context);
 
             ShowAddAccountViewCommand = new RelayCommand(_ => ShowAddAccountView());
             EditAccountCommand = new RelayCommand(_ => ShowEditAccountView(), _ => IsAccountSelected);
@@ -81,7 +84,7 @@ namespace MoneyManager.ViewModels
 
         private void ShowAddAccountView()
         {
-            var addAccountViewModel = new AddAccountViewModel(_accountRepository);
+            var addAccountViewModel = new AddAccountViewModel(_accountRepository, _currencyRepository);
             addAccountViewModel.AccountAdded += AddAccountViewModel_AccountAdded;
             CurrentViewModel = addAccountViewModel;
         }
@@ -94,7 +97,7 @@ namespace MoneyManager.ViewModels
 
         private void ShowEditAccountView()
         {
-            var editAccountViewModel = new EditAccountViewModel(_accountRepository, SelectedAccount);
+            var editAccountViewModel = new EditAccountViewModel(_accountRepository, _currencyRepository, SelectedAccount);
             editAccountViewModel.AccountUpdated += EditAccountViewModel_AccountUpdated;
             CurrentViewModel = editAccountViewModel;
         }
@@ -107,6 +110,7 @@ namespace MoneyManager.ViewModels
                 Accounts[index] = e;
                 SelectedAccount = e;
                 OnPropertyChanged(nameof(Accounts));
+                OnPropertyChanged(nameof(SelectedAccount.Currency));
             }
             CurrentViewModel = null;
         }

@@ -10,7 +10,9 @@ namespace MoneyManager.ViewModels
     public class AddAccountViewModel : INotifyPropertyChanged
     {
         private readonly AccountRepository _accountRepository;
+        private readonly CurrencyRepository _currencyRepository;
         private Account _newAccount;
+        private string _currencyCode;
 
         public Account NewAccount
         {
@@ -22,11 +24,22 @@ namespace MoneyManager.ViewModels
             }
         }
 
+        public string CurrencyCode
+        {
+            get => _currencyCode;
+            set
+            {
+                _currencyCode = value;
+                OnPropertyChanged(nameof(CurrencyCode));
+            }
+        }
+
         public ICommand AddAccountCommand { get; }
 
-        public AddAccountViewModel(AccountRepository accountRepository)
+        public AddAccountViewModel(AccountRepository accountRepository, CurrencyRepository currencyRepository)
         {
             _accountRepository = accountRepository;
+            _currencyRepository = currencyRepository;
             _newAccount = new Account();
 
             AddAccountCommand = new RelayCommand(async _ => await AddAccount());
@@ -34,8 +47,18 @@ namespace MoneyManager.ViewModels
 
         private async Task AddAccount()
         {
-            await _accountRepository.AddAsync(NewAccount);
-            AccountAdded?.Invoke(this, NewAccount);
+            var currency = await _currencyRepository.GetByCodeAsync(CurrencyCode);
+            if (currency != null)
+            {
+                NewAccount.CurrencyId = currency.CurrencyId;
+                await _accountRepository.AddAsync(NewAccount);
+                AccountAdded?.Invoke(this, NewAccount);
+            }
+            else
+            {
+                // Обработка случая, когда валюта с указанным кодом не найдена
+                // Например, можно показать сообщение пользователю
+            }
         }
 
         public event EventHandler<Account> AccountAdded;
