@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MoneyManager.Views"
         xmlns:viewmodels="clr-namespace:MoneyManager.ViewModels"
         mc:Ignorable="d"
-        Title="MoneyManager" Height="450" Width="800">
+        Title="MoneyManager" Height="450" Width="1000">
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewmodels:AddAccountViewModel}">
             <local:AddAccountView />

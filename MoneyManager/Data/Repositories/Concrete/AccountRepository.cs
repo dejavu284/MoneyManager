@@ -1,5 +1,9 @@
-﻿using MoneyManager.Data.Repositories.Base;
-using MoneyManager.Models;
+﻿using MoneyManager.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using MoneyManager.Data.Repositories.Base;
+using System.Runtime.Remoting.Contexts;
 
 namespace MoneyManager.Data.Repositories.Concrete
 {
@@ -9,6 +13,14 @@ namespace MoneyManager.Data.Repositories.Concrete
         {
         }
 
-        // Добавьте дополнительные методы для Account, если необходимо
+        public override async Task<IEnumerable<Account>> GetAllAsync()
+        {
+            return await _context.Account.Include(a => a.Currency).ToListAsync();
+        }
+
+        public override async Task<Account> GetByIdAsync(int id)
+        {
+            return await _context.Account.Include(a => a.Currency).FirstOrDefaultAsync(a => a.AccountId == id);
+        }
     }
 }

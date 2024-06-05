@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:local="clr-namespace:MoneyManager.Views" xmlns:viewmodels="clr-namespace:MoneyManager.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:AddAccountViewModel}"
              mc:Ignorable="d"
              d:DesignHeight="200" d:DesignWidth="300">
     <Grid Margin="10">
@@ -11,14 +10,18 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Account Balance:" Grid.Row="0" VerticalAlignment="Center" />
-        <TextBox Text="{Binding NewAccount.AccountBalance}" Grid.Row="0" Margin="112,14,0,10" />
+        <TextBlock Text="Account Name:" Grid.Row="0" VerticalAlignment="Center" />
+        <TextBox Text="{Binding NewAccount.AccountName}" Grid.Row="0" Margin="112,14,0,10" />
 
-        <TextBlock Text="Currency ID:" Grid.Row="1" VerticalAlignment="Center" />
-        <TextBox Text="{Binding NewAccount.CurrencyId}" Grid.Row="1" Margin="112,10,0,10" />
+        <TextBlock Text="Account Balance:" Grid.Row="1" VerticalAlignment="Center" />
+        <TextBox Text="{Binding NewAccount.AccountBalance}" Grid.Row="1" Margin="112,14,0,10" />
 
-        <Button Content="Add Account" Command="{Binding AddAccountCommand}" Grid.Row="2" HorizontalAlignment="Right" Margin="0,10,111,0" />
+        <TextBlock Text="Currency ID:" Grid.Row="2" VerticalAlignment="Center" />
+        <TextBox Text="{Binding NewAccount.CurrencyId}" Grid.Row="2" Margin="112,10,0,10" />
+
+        <Button Content="Add Account" Command="{Binding AddAccountCommand}" Grid.Row="3" HorizontalAlignment="Right" Margin="0,10,111,0" />
     </Grid>
 </UserControl>
