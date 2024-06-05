@@ -7,14 +7,14 @@ using System.Collections.Generic;
 
 namespace MoneyManager.Models
 {
-    public partial class BankTransaction
+    public partial class BankOperation
     {
-        public int TransactionId { get; set; }
-        public decimal TransactionAmount { get; set; }
-        public DateTime TransactionDate { get; set; }
+        public int OperationId { get; set; }
+        public decimal OperationAmount { get; set; }
+        public DateTime OperationDate { get; set; }
         public string Description { get; set; }
         public int AccountId { get; set; }
-        public string TransactionType { get; set; }
+        public string OperationType { get; set; }
         public int SubcategoryId { get; set; }
 
         public virtual Account Account { get; set; }

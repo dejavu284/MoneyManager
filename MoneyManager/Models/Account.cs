@@ -11,16 +11,17 @@ namespace MoneyManager.Models
     {
         public Account()
         {
-            BankTransaction = new HashSet<BankTransaction>();
+            BankOperation = new HashSet<BankOperation>();
             DepositOperation = new HashSet<DepositOperation>();
         }
 
         public int AccountId { get; set; }
         public decimal AccountBalance { get; set; }
         public int CurrencyId { get; set; }
+        public string AccountName { get; set; }
 
         public virtual Currency Currency { get; set; }
-        public virtual ICollection<BankTransaction> BankTransaction { get; set; }
+        public virtual ICollection<BankOperation> BankOperation { get; set; }
         public virtual ICollection<DepositOperation> DepositOperation { get; set; }
     }
 }

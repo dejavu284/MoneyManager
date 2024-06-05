@@ -1,5 +1,5 @@
-﻿using System.Windows.Controls;
-using MoneyManager.ViewModels;
+﻿using MoneyManager.ViewModels;
+using System.Windows.Controls;
 
 namespace MoneyManager.Views
 {
@@ -7,8 +7,8 @@ namespace MoneyManager.Views
     {
         public AccountView()
         {
-            DataContext = new AccountViewModel();
             InitializeComponent();
+            DataContext = new AccountViewModel();
         }
     }
 }

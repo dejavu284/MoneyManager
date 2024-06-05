@@ -11,7 +11,7 @@ namespace MoneyManager.Models
     {
         public Subcategory()
         {
-            BankTransaction = new HashSet<BankTransaction>();
+            BankOperation = new HashSet<BankOperation>();
         }
 
         public int SubcategoryId { get; set; }
@@ -19,6 +19,6 @@ namespace MoneyManager.Models
         public int CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
-        public virtual ICollection<BankTransaction> BankTransaction { get; set; }
+        public virtual ICollection<BankOperation> BankOperation { get; set; }
     }
 }

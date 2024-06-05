@@ -4,8 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MoneyManager.Views"
+        xmlns:viewmodels="clr-namespace:MoneyManager.ViewModels"
         mc:Ignorable="d"
         Title="MoneyManager" Height="450" Width="800">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewmodels:AddAccountViewModel}">
+            <local:AddAccountView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:EditAccountViewModel}">
+            <local:EditAccountView />
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
