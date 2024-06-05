@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using MoneyManager.Models;
@@ -10,33 +9,31 @@ using MoneyManager.Models;
 
 namespace MoneyManager.Data
 {
-    public partial class ApplicationDbContext : DbContext
+    public partial class MoneyManagerContext : DbContext
     {
-        public ApplicationDbContext()
+        public MoneyManagerContext()
         {
         }
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public MoneyManagerContext(DbContextOptions<MoneyManagerContext> options)
             : base(options)
         {
         }
 
         public virtual DbSet<Account> Account { get; set; }
-        public virtual DbSet<BankTransaction> BankTransaction { get; set; }
+        public virtual DbSet<BankOperation> BankOperation { get; set; }
         public virtual DbSet<Category> Category { get; set; }
-        public virtual DbSet<ClosedDeposits> ClosedDeposits { get; set; }
         public virtual DbSet<Currency> Currency { get; set; }
         public virtual DbSet<Deposit> Deposit { get; set; }
         public virtual DbSet<DepositOperation> DepositOperation { get; set; }
         public virtual DbSet<Subcategory> Subcategory { get; set; }
-        public virtual DbSet<TotalDepositsLastMonth> TotalDepositsLastMonth { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                optionsBuilder.UseNpgsql(connectionString);
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseNpgsql("Host=localhost;Database=MoneyManager;Username=postgres;Password=1111");
             }
         }
 
@@ -52,6 +49,11 @@ namespace MoneyManager.Data
                     .HasColumnName("account_balance")
                     .HasColumnType("numeric(10,2)");
 
+                entity.Property(e => e.AccountName)
+                    .IsRequired()
+                    .HasColumnName("account_name")
+                    .HasColumnType("character varying");
+
                 entity.Property(e => e.CurrencyId).HasColumnName("currency_id");
 
                 entity.HasOne(d => d.Currency)
@@ -61,14 +63,14 @@ namespace MoneyManager.Data
                     .HasConstraintName("account_currency_id_fkey");
             });
 
-            modelBuilder.Entity<BankTransaction>(entity =>
+            modelBuilder.Entity<BankOperation>(entity =>
             {
-                entity.HasKey(e => e.TransactionId)
-                    .HasName("bank_transaction_pkey");
+                entity.HasKey(e => e.OperationId)
+                    .HasName("bank_operation_pkey");
 
-                entity.ToTable("bank_transaction");
+                entity.ToTable("bank_operation");
 
-                entity.Property(e => e.TransactionId).HasColumnName("transaction_id");
+                entity.Property(e => e.OperationId).HasColumnName("operation_id");
 
                 entity.Property(e => e.AccountId).HasColumnName("account_id");
 
@@ -76,31 +78,31 @@ namespace MoneyManager.Data
                     .IsRequired()
                     .HasColumnName("description");
 
-                entity.Property(e => e.SubcategoryId).HasColumnName("subcategory_id");
-
-                entity.Property(e => e.TransactionAmount)
-                    .HasColumnName("transaction_amount")
+                entity.Property(e => e.OperationAmount)
+                    .HasColumnName("operation_amount")
                     .HasColumnType("numeric(10,2)");
 
-                entity.Property(e => e.TransactionDate)
-                    .HasColumnName("transaction_date")
+                entity.Property(e => e.OperationDate)
+                    .HasColumnName("operation_date")
                     .HasColumnType("date");
 
-                entity.Property(e => e.TransactionType)
+                entity.Property(e => e.OperationType)
                     .IsRequired()
-                    .HasColumnName("transaction_type")
+                    .HasColumnName("operation_type")
                     .HasMaxLength(50);
 
+                entity.Property(e => e.SubcategoryId).HasColumnName("subcategory_id");
+
                 entity.HasOne(d => d.Account)
-                    .WithMany(p => p.BankTransaction)
+                    .WithMany(p => p.BankOperation)
                     .HasForeignKey(d => d.AccountId)
-                    .HasConstraintName("bank_transaction_account_id_fkey");
+                    .HasConstraintName("bank_operation_account_id_fkey");
 
                 entity.HasOne(d => d.Subcategory)
-                    .WithMany(p => p.BankTransaction)
+                    .WithMany(p => p.BankOperation)
                     .HasForeignKey(d => d.SubcategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("bank_transaction_subcategory_id_fkey");
+                    .HasConstraintName("bank_operation_subcategory_id_fkey");
             });
 
             modelBuilder.Entity<Category>(entity =>
@@ -113,33 +115,6 @@ namespace MoneyManager.Data
                     .IsRequired()
                     .HasColumnName("category_name")
                     .HasMaxLength(100);
-            });
-
-            modelBuilder.Entity<ClosedDeposits>(entity =>
-            {
-                entity.HasNoKey();
-
-                entity.ToTable("closed_deposits");
-
-                entity.Property(e => e.CurrencyId).HasColumnName("currency_id");
-
-                entity.Property(e => e.DepositAmount)
-                    .HasColumnName("deposit_amount")
-                    .HasColumnType("numeric(10,2)");
-
-                entity.Property(e => e.DepositId).HasColumnName("deposit_id");
-
-                entity.Property(e => e.EndDate)
-                    .HasColumnName("end_date")
-                    .HasColumnType("date");
-
-                entity.Property(e => e.InterestRate)
-                    .HasColumnName("interest_rate")
-                    .HasColumnType("numeric(5,2)");
-
-                entity.Property(e => e.StartDate)
-                    .HasColumnName("start_date")
-                    .HasColumnType("date");
             });
 
             modelBuilder.Entity<Currency>(entity =>
@@ -181,6 +156,8 @@ namespace MoneyManager.Data
                 entity.Property(e => e.StartDate)
                     .HasColumnName("start_date")
                     .HasColumnType("date");
+
+                entity.Property(e => e.Status).HasColumnName("status");
 
                 entity.HasOne(d => d.Currency)
                     .WithMany(p => p.Deposit)
@@ -243,17 +220,6 @@ namespace MoneyManager.Data
                     .HasForeignKey(d => d.CategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("subcategory_category_id_fkey");
-            });
-
-            modelBuilder.Entity<TotalDepositsLastMonth>(entity =>
-            {
-                entity.HasNoKey();
-
-                entity.ToTable("total_deposits_last_month");
-
-                entity.Property(e => e.TotalDepositAmount)
-                    .HasColumnName("total_deposit_amount")
-                    .HasColumnType("numeric");
             });
 
             OnModelCreatingPartial(modelBuilder);

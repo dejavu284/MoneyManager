@@ -154,18 +154,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Data\ApplicationDbContext.cs" />
-    <Compile Include="Data\DbContextSingleton.cs" />
-    <Compile Include="Data\Services\AccountService.cs" />
-    <Compile Include="Data\Services\BankTransactionService.cs" />
-    <Compile Include="Data\Services\CategoryService.cs" />
-    <Compile Include="Data\Services\CurrencyService.cs" />
-    <Compile Include="Data\Services\DataService.cs" />
-    <Compile Include="Data\Services\DepositOperationService.cs" />
-    <Compile Include="Data\Services\DepositService.cs" />
-    <Compile Include="Data\Services\SubcategoryService.cs" />
-    <Compile Include="Models\ClosedDeposits.cs" />
-    <Compile Include="Models\TotalDepositsLastMonth.cs" />
+    <Compile Include="Data\MoneyManagerContext.cs" />
+    <Compile Include="Data\Repositories\Base\Repository.cs" />
+    <Compile Include="Data\Repositories\Concrete\AccountRepository.cs" />
+    <Compile Include="Data\Repositories\Concrete\BankTransactionRepository.cs" />
+    <Compile Include="Data\Repositories\Concrete\CategoryRepository.cs" />
+    <Compile Include="Data\Repositories\Concrete\CurrencyRepository.cs" />
+    <Compile Include="Data\Repositories\Concrete\DepositOperationRepository.cs" />
+    <Compile Include="Data\Repositories\Concrete\DepositRepository.cs" />
+    <Compile Include="Data\Repositories\Concrete\SubcategoryRepository.cs" />
+    <Compile Include="Data\Repositories\Interfaces\IRepository.cs" />
+    <Compile Include="Models\BankOperation.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\AddAccountViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
@@ -174,6 +173,7 @@
     <Compile Include="ViewModels\CurrencyViewModel.cs" />
     <Compile Include="ViewModels\DepositOperationsViewModel.cs" />
     <Compile Include="ViewModels\DepositViewModel.cs" />
+    <Compile Include="ViewModels\EditAccountViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\SubcategoryViewModel.cs" />
@@ -202,6 +202,9 @@
     <Compile Include="Views\DepositView.xaml.cs">
       <DependentUpon>DepositView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EditAccountView.xaml.cs">
+      <DependentUpon>EditAccountView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SubcategoryView.xaml.cs">
       <DependentUpon>SubcategoryView.xaml</DependentUpon>
     </Compile>
@@ -209,6 +212,10 @@
       <DependentUpon>TransactionHistoryView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\AddAccountView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditAccountView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -263,7 +270,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Account.cs" />
-    <Compile Include="Models\BankTransaction.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Currency.cs" />
     <Compile Include="Models\Deposit.cs" />

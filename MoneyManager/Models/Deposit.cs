@@ -20,6 +20,7 @@ namespace MoneyManager.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int CurrencyId { get; set; }
+        public bool Status { get; set; }
 
         public virtual Currency Currency { get; set; }
         public virtual ICollection<DepositOperation> DepositOperation { get; set; }

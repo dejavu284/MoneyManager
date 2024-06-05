@@ -1,15 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MoneyManager.Data.Repositories.Interfaces;
+using MoneyManager.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MoneyManager.Data.Services
+namespace MoneyManager.Data.Repositories.Base
 {
-    public class DataService<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class
     {
-        private readonly ApplicationDbContext _context;
-        private readonly DbSet<T> _dbSet;
+        protected readonly MoneyManagerContext _context;
+        protected readonly DbSet<T> _dbSet;
 
-        public DataService(ApplicationDbContext context)
+        public Repository(MoneyManagerContext context)
         {
             _context = context;
             _dbSet = _context.Set<T>();
