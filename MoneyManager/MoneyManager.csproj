@@ -167,6 +167,7 @@
     <Compile Include="Models\BankOperation.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\AddAccountViewModel.cs" />
+    <Compile Include="ViewModels\AddDepositViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\CreateDepositOperationViewModel.cs" />
     <Compile Include="ViewModels\CreateTransactionViewModel.cs" />
@@ -174,6 +175,7 @@
     <Compile Include="ViewModels\DepositOperationsViewModel.cs" />
     <Compile Include="ViewModels\DepositViewModel.cs" />
     <Compile Include="ViewModels\EditAccountViewModel.cs" />
+    <Compile Include="ViewModels\EditDepositViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\SubcategoryViewModel.cs" />
@@ -183,6 +185,9 @@
     </Compile>
     <Compile Include="Views\AddAccountView.xaml.cs">
       <DependentUpon>AddAccountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddDepositView.xaml.cs">
+      <DependentUpon>AddDepositView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CategoryView.xaml.cs">
       <DependentUpon>CategoryView.xaml</DependentUpon>
@@ -205,6 +210,9 @@
     <Compile Include="Views\EditAccountView.xaml.cs">
       <DependentUpon>EditAccountView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EditDepositView.xaml.cs">
+      <DependentUpon>EditDepositView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SubcategoryView.xaml.cs">
       <DependentUpon>SubcategoryView.xaml</DependentUpon>
     </Compile>
@@ -215,7 +223,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AddDepositView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\EditAccountView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditDepositView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

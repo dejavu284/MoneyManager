@@ -7,20 +7,20 @@ using System;
 
 namespace MoneyManager.ViewModels
 {
-    public class AddAccountViewModel : INotifyPropertyChanged
+    public class AddDepositViewModel : INotifyPropertyChanged
     {
-        private readonly AccountRepository _accountRepository;
+        private readonly DepositRepository _depositRepository;
         private readonly CurrencyRepository _currencyRepository;
-        private Account _newAccount;
+        private Deposit _newDeposit;
         private string _currencyCode;
 
-        public Account NewAccount
+        public Deposit NewDeposit
         {
-            get => _newAccount;
+            get => _newDeposit;
             set
             {
-                _newAccount = value;
-                OnPropertyChanged(nameof(NewAccount));
+                _newDeposit = value;
+                OnPropertyChanged(nameof(NewDeposit));
             }
         }
 
@@ -34,26 +34,30 @@ namespace MoneyManager.ViewModels
             }
         }
 
-        public ICommand AddAccountCommand { get; }
+        public ICommand AddDepositCommand { get; }
 
-        public AddAccountViewModel(AccountRepository accountRepository, CurrencyRepository currencyRepository)
+        public AddDepositViewModel(DepositRepository depositRepository, CurrencyRepository currencyRepository)
         {
-            _accountRepository = accountRepository;
+            _depositRepository = depositRepository;
             _currencyRepository = currencyRepository;
-            _newAccount = new Account();
+            _newDeposit = new Deposit
+            {
+                StartDate = DateTime.Today,
+                EndDate = DateTime.Today
+            };
 
-            AddAccountCommand = new RelayCommand(async _ => await AddAccount());
+            AddDepositCommand = new RelayCommand(async _ => await AddDeposit());
         }
 
-        private async Task AddAccount()
+        private async Task AddDeposit()
         {
             var currency = await _currencyRepository.GetByCodeAsync(CurrencyCode);
             if (currency != null)
             {
-                NewAccount.CurrencyId = currency.CurrencyId;
-                NewAccount.Status = true;  // Активируем вклад при добавлении
-                await _accountRepository.AddAsync(NewAccount);
-                AccountAdded?.Invoke(this, NewAccount);
+                NewDeposit.CurrencyId = currency.CurrencyId;
+                NewDeposit.Status = true;  // Активируем вклад при добавлении
+                await _depositRepository.AddAsync(NewDeposit);
+                DepositAdded?.Invoke(this, NewDeposit);
             }
             else
             {
@@ -62,7 +66,7 @@ namespace MoneyManager.ViewModels
             }
         }
 
-        public event EventHandler<Account> AccountAdded;
+        public event EventHandler<Deposit> DepositAdded;
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {

@@ -19,6 +19,7 @@ namespace MoneyManager.Models
         public decimal AccountBalance { get; set; }
         public int CurrencyId { get; set; }
         public string AccountName { get; set; }
+        public bool Status { get; set; }
 
         public virtual Currency Currency { get; set; }
         public virtual ICollection<BankOperation> BankOperation { get; set; }

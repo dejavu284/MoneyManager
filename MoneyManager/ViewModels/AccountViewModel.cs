@@ -5,6 +5,8 @@ using System.ComponentModel;
 using System.Windows.Input;
 using System.Configuration;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using System.Windows;
 using MoneyManager.Data;
 
 namespace MoneyManager.ViewModels
@@ -52,6 +54,7 @@ namespace MoneyManager.ViewModels
 
         public ICommand ShowAddAccountViewCommand { get; }
         public ICommand EditAccountCommand { get; }
+        public ICommand DeleteAccountCommand { get; }
 
         public AccountViewModel()
         {
@@ -61,6 +64,7 @@ namespace MoneyManager.ViewModels
 
             ShowAddAccountViewCommand = new RelayCommand(_ => ShowAddAccountView());
             EditAccountCommand = new RelayCommand(_ => ShowEditAccountView(), _ => IsAccountSelected);
+            DeleteAccountCommand = new RelayCommand(async _ => await DeleteAccount(), _ => IsAccountSelected);
 
             LoadAccounts();
 
@@ -110,9 +114,25 @@ namespace MoneyManager.ViewModels
                 Accounts[index] = e;
                 SelectedAccount = e;
                 OnPropertyChanged(nameof(Accounts));
-                OnPropertyChanged(nameof(SelectedAccount.Currency));
             }
             CurrentViewModel = null;
+        }
+
+        private async Task DeleteAccount()
+        {
+            if (SelectedAccount != null)
+            {
+                // Показать всплывающее окно с подтверждением
+                var result = MessageBox.Show("Вы уверены, что хотите удалить данный счёт?", "Подтверждение удаления", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    await _accountRepository.DeleteAsync(SelectedAccount.AccountId);
+                    Accounts.Remove(SelectedAccount);
+                    SelectedAccount = null;
+                    OnPropertyChanged(nameof(IsAccountSelected));
+                }
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

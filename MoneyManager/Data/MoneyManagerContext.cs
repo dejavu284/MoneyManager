@@ -56,6 +56,8 @@ namespace MoneyManager.Data
 
                 entity.Property(e => e.CurrencyId).HasColumnName("currency_id");
 
+                entity.Property(e => e.Status).HasColumnName("status");
+
                 entity.HasOne(d => d.Currency)
                     .WithMany(p => p.Account)
                     .HasForeignKey(d => d.CurrencyId)

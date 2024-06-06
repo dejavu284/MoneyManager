@@ -19,14 +19,16 @@ namespace MoneyManager.ViewModels
 
         public ICommand ShowAccountViewCommand { get; }
         public ICommand ShowTransactionHistoryViewCommand { get; }
+        public ICommand ShowDepositViewCommand { get; }
 
         public MainWindowViewModel()
         {
             ShowAccountViewCommand = new RelayCommand(_ => ShowAccountView());
             ShowTransactionHistoryViewCommand = new RelayCommand(_ => ShowTransactionHistoryView());
+            ShowDepositViewCommand = new RelayCommand(_ => ShowDepositView());
 
             // Set default view
-            ShowAccountView();
+            ShowDepositView();
         }
 
         private void ShowAccountView()
@@ -37,6 +39,11 @@ namespace MoneyManager.ViewModels
         private void ShowTransactionHistoryView()
         {
             CurrentView = new TransactionHistoryView();
+        }
+
+        private void ShowDepositView()
+        {
+            CurrentView = new DepositView();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

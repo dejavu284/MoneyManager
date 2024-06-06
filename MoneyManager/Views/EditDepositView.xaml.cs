@@ -1,5 +1,4 @@
-﻿using MoneyManager.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,14 +16,13 @@ using System.Windows.Shapes;
 namespace MoneyManager.Views
 {
     /// <summary>
-    /// Interaction logic for DepositView.xaml
+    /// Interaction logic for EditDepositView.xaml
     /// </summary>
-    public partial class DepositView : UserControl
+    public partial class EditDepositView : UserControl
     {
-        public DepositView()
+        public EditDepositView()
         {
             InitializeComponent();
-            DataContext = new DepositViewModel();
         }
     }
 }
