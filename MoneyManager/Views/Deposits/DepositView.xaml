@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="MoneyManager.Views.Deposits.DepositView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:MoneyManager.Views.Deposits"
+             xmlns:viewmodels="clr-namespace:MoneyManager.ViewModels.Deposits"
+             d:DesignHeight="450" d:DesignWidth="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Список вкладов -->
+        <ListView ItemsSource="{Binding Deposits}" SelectedItem="{Binding SelectedDeposit}" Grid.Column="0" Grid.Row="0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding DepositId}" Width="50"/>
+                    <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding DepositAmount}" Width="100"/>
+                    <GridViewColumn Header="Interest Rate" DisplayMemberBinding="{Binding InterestRate}" Width="100"/>
+                    <GridViewColumn Header="Start Date" DisplayMemberBinding="{Binding StartDate}" Width="100"/>
+                    <GridViewColumn Header="End Date" DisplayMemberBinding="{Binding EndDate}" Width="100"/>
+                    <GridViewColumn Header="Currency" DisplayMemberBinding="{Binding Currency.CurrencyCode}" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!-- Кнопки управления -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="0,10,0,10" Width="300">
+            <Button Content="Add" Command="{Binding ShowAddDepositViewCommand}" Margin="5"/>
+            <Button Content="Edit" Command="{Binding EditDepositCommand}" Margin="5" IsEnabled="{Binding IsDepositSelected}"/>
+            <Button Content="Delete" Command="{Binding DeleteDepositCommand}" Margin="5" IsEnabled="{Binding IsDepositSelected}"/>
+        </StackPanel>
+
+        <!-- ContentControl для отображения AddDepositView -->
+        <ContentControl Grid.Column="1" Grid.RowSpan="2" Content="{Binding CurrentViewModel}" />
+    </Grid>
+</UserControl>

@@ -5,38 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MoneyManager.Views"
         xmlns:viewmodels="clr-namespace:MoneyManager.ViewModels"
+        xmlns:viewmodelsaccounts="clr-namespace:MoneyManager.ViewModels.Accounts"
+        xmlns:viewmodelscategorys="clr-namespace:MoneyManager.ViewModels.Categorys"
+        xmlns:viewmodelscurrencys="clr-namespace:MoneyManager.ViewModels.Currencys"
+        xmlns:viewmodelsdeposits="clr-namespace:MoneyManager.ViewModels.Deposits"
+        xmlns:local1="clr-namespace:MoneyManager.Views.Accounts"
+        xmlns:local2="clr-namespace:MoneyManager.Views.Deposits"
+        xmlns:local3="clr-namespace:MoneyManager.Views.Categorys"
+        xmlns:local4="clr-namespace:MoneyManager.Views.Currencys"
         mc:Ignorable="d"
         Title="MoneyManager" Height="450" Width="800">
     <Window.Resources>
-        <DataTemplate DataType="{x:Type viewmodels:AddAccountViewModel}">
-            <local:AddAccountView />
+        <DataTemplate DataType="{x:Type viewmodelsaccounts:AddAccountViewModel}">
+            <local1:AddAccountView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:EditAccountViewModel}">
-            <local:EditAccountView />
+        <DataTemplate DataType="{x:Type viewmodelsaccounts:EditAccountViewModel}">
+            <local1:EditAccountView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:AddDepositViewModel}">
-            <local:AddDepositView />
+        <DataTemplate DataType="{x:Type viewmodelsdeposits:AddDepositViewModel}">
+            <local2:AddDepositView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:EditDepositViewModel}">
-            <local:EditDepositView />
+        <DataTemplate DataType="{x:Type viewmodelsdeposits:EditDepositViewModel}">
+            <local2:EditDepositView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:AddCategoryViewModel}">
-            <local:AddCategoryView />
+        <DataTemplate DataType="{x:Type viewmodelscategorys:AddCategoryViewModel}">
+            <local3:AddCategoryView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:EditCategoryViewModel}">
-            <local:EditCategoryView />
+        <DataTemplate DataType="{x:Type viewmodelscategorys:EditCategoryViewModel}">
+            <local3:EditCategoryView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:AddCurrencyViewModel}">
-            <local:AddCurrencyView />
+        <DataTemplate DataType="{x:Type viewmodelscurrencys:AddCurrencyViewModel}">
+            <local4:AddCurrencyView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:EditCurrencyViewModel}">
-            <local:EditCurrencyView />
+        <DataTemplate DataType="{x:Type viewmodelscurrencys:EditCurrencyViewModel}">
+            <local4:EditCurrencyView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:CategoryViewModel}">
-            <local:CategoryView />
+        <DataTemplate DataType="{x:Type viewmodelscategorys:CategoryViewModel}">
+            <local3:CategoryView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:CurrencyViewModel}">
-            <local:CurrencyView />
+        <DataTemplate DataType="{x:Type viewmodelscurrencys:CurrencyViewModel}">
+            <local4:CurrencyView />
         </DataTemplate>
     </Window.Resources>
 
@@ -49,7 +57,6 @@
         <!-- Панель навигации -->
         <StackPanel Grid.Column="0" Background="LightGray">
             <Button Content="Accounts" Command="{Binding ShowAccountViewCommand}"/>
-            <Button Content="Transactions" Command="{Binding ShowTransactionHistoryViewCommand}"/>
             <Button Content="Deposits" Command="{Binding ShowDepositViewCommand}"/>
             <Button Content="Categories" Command="{Binding ShowCategoryViewCommand}"/>
             <Button Content="Currencies" Command="{Binding ShowCurrencyViewCommand}"/>

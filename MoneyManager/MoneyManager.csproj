@@ -165,105 +165,85 @@
     <Compile Include="Data\Repositories\Concrete\SubcategoryRepository.cs" />
     <Compile Include="Data\Repositories\Interfaces\IRepository.cs" />
     <Compile Include="Models\BankOperation.cs" />
-    <Compile Include="ViewModels\AccountViewModel.cs" />
-    <Compile Include="ViewModels\AddAccountViewModel.cs" />
-    <Compile Include="ViewModels\AddCategoryViewModel.cs" />
-    <Compile Include="ViewModels\AddCurrencyViewModel.cs" />
-    <Compile Include="ViewModels\AddDepositViewModel.cs" />
-    <Compile Include="ViewModels\CategoryViewModel.cs" />
-    <Compile Include="ViewModels\CreateDepositOperationViewModel.cs" />
-    <Compile Include="ViewModels\CreateTransactionViewModel.cs" />
-    <Compile Include="ViewModels\CurrencyViewModel.cs" />
-    <Compile Include="ViewModels\DepositOperationsViewModel.cs" />
-    <Compile Include="ViewModels\DepositViewModel.cs" />
-    <Compile Include="ViewModels\EditAccountViewModel.cs" />
-    <Compile Include="ViewModels\EditCategoryViewModel.cs" />
-    <Compile Include="ViewModels\EditCurrencyViewModel.cs" />
-    <Compile Include="ViewModels\EditDepositViewModel.cs" />
+    <Compile Include="ViewModels\Accounts\AccountViewModel.cs" />
+    <Compile Include="ViewModels\Accounts\AddAccountViewModel.cs" />
+    <Compile Include="ViewModels\Categorys\AddCategoryViewModel.cs" />
+    <Compile Include="ViewModels\Currencys\AddCurrencyViewModel.cs" />
+    <Compile Include="ViewModels\Deposits\AddDepositViewModel.cs" />
+    <Compile Include="ViewModels\Categorys\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\Currencys\CurrencyViewModel.cs" />
+    <Compile Include="ViewModels\Deposits\DepositViewModel.cs" />
+    <Compile Include="ViewModels\Accounts\EditAccountViewModel.cs" />
+    <Compile Include="ViewModels\Categorys\EditCategoryViewModel.cs" />
+    <Compile Include="ViewModels\Currencys\EditCurrencyViewModel.cs" />
+    <Compile Include="ViewModels\Deposits\EditDepositViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
-    <Compile Include="ViewModels\SubcategoryViewModel.cs" />
-    <Compile Include="ViewModels\TransactionHistoryViewModel.cs" />
-    <Compile Include="Views\AccountView.xaml.cs">
+    <Compile Include="Views\Accounts\AccountView.xaml.cs">
       <DependentUpon>AccountView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddAccountView.xaml.cs">
+    <Compile Include="Views\Accounts\AddAccountView.xaml.cs">
       <DependentUpon>AddAccountView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddCategoryView.xaml.cs">
+    <Compile Include="Views\Categorys\AddCategoryView.xaml.cs">
       <DependentUpon>AddCategoryView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddCurrencyView.xaml.cs">
+    <Compile Include="Views\Currencys\AddCurrencyView.xaml.cs">
       <DependentUpon>AddCurrencyView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddDepositView.xaml.cs">
+    <Compile Include="Views\Deposits\AddDepositView.xaml.cs">
       <DependentUpon>AddDepositView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CategoryView.xaml.cs">
+    <Compile Include="Views\Categorys\CategoryView.xaml.cs">
       <DependentUpon>CategoryView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CreateDepositOperationView.xaml.cs">
-      <DependentUpon>CreateDepositOperationView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CreateTransactionView.xaml.cs">
-      <DependentUpon>CreateTransactionView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CurrencyView.xaml.cs">
+    <Compile Include="Views\Currencys\CurrencyView.xaml.cs">
       <DependentUpon>CurrencyView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DepositOperationsView.xaml.cs">
-      <DependentUpon>DepositOperationsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DepositView.xaml.cs">
+    <Compile Include="Views\Deposits\DepositView.xaml.cs">
       <DependentUpon>DepositView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditAccountView.xaml.cs">
+    <Compile Include="Views\Accounts\EditAccountView.xaml.cs">
       <DependentUpon>EditAccountView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditCategoryView.xaml.cs">
+    <Compile Include="Views\Categorys\EditCategoryView.xaml.cs">
       <DependentUpon>EditCategoryView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditCurrencyView.xaml.cs">
+    <Compile Include="Views\Currencys\EditCurrencyView.xaml.cs">
       <DependentUpon>EditCurrencyView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditDepositView.xaml.cs">
+    <Compile Include="Views\Deposits\EditDepositView.xaml.cs">
       <DependentUpon>EditDepositView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SubcategoryView.xaml.cs">
-      <DependentUpon>SubcategoryView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\TransactionHistoryView.xaml.cs">
-      <DependentUpon>TransactionHistoryView.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Views\AddAccountView.xaml">
+    <Page Include="Views\Accounts\AddAccountView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddCategoryView.xaml">
+    <Page Include="Views\Categorys\AddCategoryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddCurrencyView.xaml">
+    <Page Include="Views\Currencys\AddCurrencyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddDepositView.xaml">
+    <Page Include="Views\Deposits\AddDepositView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EditAccountView.xaml">
+    <Page Include="Views\Accounts\EditAccountView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EditCategoryView.xaml">
+    <Page Include="Views\Categorys\EditCategoryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EditCurrencyView.xaml">
+    <Page Include="Views\Currencys\EditCurrencyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EditDepositView.xaml">
+    <Page Include="Views\Deposits\EditDepositView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -279,39 +259,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\AccountView.xaml">
+    <Page Include="Views\Accounts\AccountView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CategoryView.xaml">
+    <Page Include="Views\Categorys\CategoryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CreateDepositOperationView.xaml">
+    <Page Include="Views\Currencys\CurrencyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CreateTransactionView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\CurrencyView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\DepositOperationsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\DepositView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SubcategoryView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TransactionHistoryView.xaml">
+    <Page Include="Views\Deposits\DepositView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

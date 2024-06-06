@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="MoneyManager.Views.Accounts.AccountView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:viewmodels="clr-namespace:MoneyManager.ViewModels.Accounts"
+             d:DesignHeight="450" d:DesignWidth="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Список счетов -->
+        <ListView ItemsSource="{Binding Accounts}" SelectedItem="{Binding SelectedAccount}" Grid.Column="0" Grid.Row="0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding AccountId}" Width="50"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding AccountName}" Width="180"/>
+                    <GridViewColumn Header="Balance" DisplayMemberBinding="{Binding AccountBalance}" Width="100"/>
+                    <GridViewColumn Header="Currency" DisplayMemberBinding="{Binding Currency.CurrencyCode}" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!-- Кнопки управления -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="0,10,0,10" Width="200">
+            <Button Content="Add" Command="{Binding ShowAddAccountViewCommand}" Margin="5"/>
+            <Button Content="Edit" Command="{Binding EditAccountCommand}" Margin="5" IsEnabled="{Binding IsAccountSelected}"/>
+            <Button Content="Delete" Command="{Binding DeleteAccountCommand}" Margin="5" IsEnabled="{Binding IsAccountSelected}"/>
+        </StackPanel>
+
+        <!-- ContentControl для отображения AddAccountView -->
+        <ContentControl Grid.Column="1" Grid.RowSpan="2" Content="{Binding CurrentViewModel}" />
+    </Grid>
+</UserControl>

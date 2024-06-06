@@ -125,10 +125,6 @@ namespace MoneyManager.Data
             {
                 entity.ToTable("currency");
 
-                entity.HasIndex(e => e.CurrencyCode)
-                    .HasName("currency_currency_code_key")
-                    .IsUnique();
-
                 entity.Property(e => e.CurrencyId).HasColumnName("currency_id");
 
                 entity.Property(e => e.CurrencyCode)

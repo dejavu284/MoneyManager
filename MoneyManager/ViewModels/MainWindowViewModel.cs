@@ -1,4 +1,8 @@
-﻿using MoneyManager.Views;
+﻿using MoneyManager.Views.Accounts;
+using MoneyManager.Views.Categorys;
+using MoneyManager.Views.Currencys;
+using MoneyManager.Views.Deposits;
+using MoneyManager.Views;
 using System.ComponentModel;
 using System.Windows.Input;
 
@@ -18,7 +22,6 @@ namespace MoneyManager.ViewModels
         }
 
         public ICommand ShowAccountViewCommand { get; }
-        public ICommand ShowTransactionHistoryViewCommand { get; }
         public ICommand ShowDepositViewCommand { get; }
         public ICommand ShowCategoryViewCommand { get; }
         public ICommand ShowCurrencyViewCommand { get; }
@@ -37,7 +40,6 @@ namespace MoneyManager.ViewModels
         public MainWindowViewModel()
         {
             ShowAccountViewCommand = new RelayCommand(_ => ShowAccountView());
-            ShowTransactionHistoryViewCommand = new RelayCommand(_ => ShowTransactionHistoryView());
             ShowDepositViewCommand = new RelayCommand(_ => ShowDepositView());
             ShowCategoryViewCommand = new RelayCommand(_ => ShowCategoryView());
             ShowCurrencyViewCommand = new RelayCommand(_ => ShowCurrencyView());
@@ -50,11 +52,6 @@ namespace MoneyManager.ViewModels
         private void ShowAccountView()
         {
             CurrentView = new AccountView();
-        }
-
-        private void ShowTransactionHistoryView()
-        {
-            CurrentView = new TransactionHistoryView();
         }
 
         private void ShowDepositView()
