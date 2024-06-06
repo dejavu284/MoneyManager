@@ -10,11 +10,13 @@
         xmlns:viewmodelscurrencys="clr-namespace:MoneyManager.ViewModels.Currencys"
         xmlns:viewmodelsdeposits="clr-namespace:MoneyManager.ViewModels.Deposits"
         xmlns:viewmodelssubcategories="clr-namespace:MoneyManager.ViewModels.Subcategories"
+        xmlns:viewmodelsbankoperations="clr-namespace:MoneyManager.ViewModels.BankOperations"
         xmlns:local1="clr-namespace:MoneyManager.Views.Accounts"
         xmlns:local2="clr-namespace:MoneyManager.Views.Deposits"
         xmlns:local3="clr-namespace:MoneyManager.Views.Categorys"
         xmlns:local4="clr-namespace:MoneyManager.Views.Currencys"
         xmlns:local5="clr-namespace:MoneyManager.Views.Subcategories"
+        xmlns:local6="clr-namespace:MoneyManager.Views.BankOperations"
         mc:Ignorable="d"
         Title="MoneyManager" Height="600" Width="1200">
     <Window.Resources>
@@ -51,6 +53,15 @@
         <DataTemplate DataType="{x:Type viewmodelssubcategories:SubcategoryViewModel}">
             <local5:SubcategoryView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodelsbankoperations:AddBankOperationViewModel}">
+            <local6:AddBankOperationView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodelsbankoperations:EditBankOperationViewModel}">
+            <local6:EditBankOperationView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodelsbankoperations:BankOperationViewModel}">
+            <local6:BankOperationView />
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
@@ -67,6 +78,7 @@
             <Button Content="Categories" Command="{Binding ShowCategoryViewCommand}"/>
             <Button Content="Currencies" Command="{Binding ShowCurrencyViewCommand}"/>
             <Button Content="Subcategories" Command="{Binding ShowSubcategoryViewCommand}"/>
+            <Button Content="Bank Operations" Command="{Binding ShowBankOperationViewCommand}"/>
             <!-- Добавьте другие кнопки навигации здесь -->
         </StackPanel>
 

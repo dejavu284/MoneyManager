@@ -6,6 +6,7 @@ using MoneyManager.Views.Subcategories;
 using MoneyManager.Views;
 using System.ComponentModel;
 using System.Windows.Input;
+using MoneyManager.Views.BankOperations;
 
 namespace MoneyManager.ViewModels
 {
@@ -27,6 +28,8 @@ namespace MoneyManager.ViewModels
         public ICommand ShowCategoryViewCommand { get; }
         public ICommand ShowCurrencyViewCommand { get; }
         public ICommand ShowSubcategoryViewCommand { get; }
+        public ICommand ShowBankOperationViewCommand { get; }
+
 
         public MainWindowViewModel()
         {
@@ -35,6 +38,8 @@ namespace MoneyManager.ViewModels
             ShowCategoryViewCommand = new RelayCommand(_ => ShowCategoryView());
             ShowCurrencyViewCommand = new RelayCommand(_ => ShowCurrencyView());
             ShowSubcategoryViewCommand = new RelayCommand(_ => ShowSubcategoryView());
+            ShowBankOperationViewCommand = new RelayCommand(_ => ShowBankOperationView());
+
 
             // Set default view
             ShowAccountView();
@@ -63,6 +68,11 @@ namespace MoneyManager.ViewModels
         private void ShowSubcategoryView()
         {
             CurrentView = new SubcategoryView();
+        }
+
+        private void ShowBankOperationView()
+        {
+            CurrentView = new BankOperationView();
         }
 
 

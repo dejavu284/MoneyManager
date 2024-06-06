@@ -157,6 +157,7 @@
     <Compile Include="Data\MoneyManagerContext.cs" />
     <Compile Include="Data\Repositories\Base\Repository.cs" />
     <Compile Include="Data\Repositories\Concrete\AccountRepository.cs" />
+    <Compile Include="Data\Repositories\Concrete\BankOperationRepository.cs" />
     <Compile Include="Data\Repositories\Concrete\CategoryRepository.cs" />
     <Compile Include="Data\Repositories\Concrete\CurrencyRepository.cs" />
     <Compile Include="Data\Repositories\Concrete\DepositRepository.cs" />
@@ -165,6 +166,9 @@
     <Compile Include="Models\BankOperation.cs" />
     <Compile Include="ViewModels\Accounts\AccountViewModel.cs" />
     <Compile Include="ViewModels\Accounts\AddAccountViewModel.cs" />
+    <Compile Include="ViewModels\BankOperations\AddBankOperationViewModel.cs" />
+    <Compile Include="ViewModels\BankOperations\BankOperationViewModel.cs" />
+    <Compile Include="ViewModels\BankOperations\EditBankOperationViewModel.cs" />
     <Compile Include="ViewModels\Categorys\AddCategoryViewModel.cs" />
     <Compile Include="ViewModels\Currencys\AddCurrencyViewModel.cs" />
     <Compile Include="ViewModels\Deposits\AddDepositViewModel.cs" />
@@ -185,6 +189,15 @@
     </Compile>
     <Compile Include="Views\Accounts\AddAccountView.xaml.cs">
       <DependentUpon>AddAccountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BankOperations\AddBankOperationView.xaml.cs">
+      <DependentUpon>AddBankOperationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BankOperations\BankOperationView.xaml.cs">
+      <DependentUpon>BankOperationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BankOperations\EditBankOperationView.xaml.cs">
+      <DependentUpon>EditBankOperationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Categorys\AddCategoryView.xaml.cs">
       <DependentUpon>AddCategoryView.xaml</DependentUpon>
@@ -226,6 +239,18 @@
       <DependentUpon>SubcategoryView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\Accounts\AddAccountView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BankOperations\AddBankOperationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BankOperations\BankOperationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BankOperations\EditBankOperationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
