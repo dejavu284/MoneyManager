@@ -117,6 +117,8 @@ namespace MoneyManager.Data
                     .IsRequired()
                     .HasColumnName("category_name")
                     .HasMaxLength(100);
+
+                entity.Property(e => e.Status).HasColumnName("status");
             });
 
             modelBuilder.Entity<Currency>(entity =>
@@ -133,6 +135,8 @@ namespace MoneyManager.Data
                     .IsRequired()
                     .HasColumnName("currency_code")
                     .HasMaxLength(10);
+
+                entity.Property(e => e.Status).HasColumnName("status");
             });
 
             modelBuilder.Entity<Deposit>(entity =>
@@ -211,6 +215,8 @@ namespace MoneyManager.Data
                 entity.Property(e => e.SubcategoryId).HasColumnName("subcategory_id");
 
                 entity.Property(e => e.CategoryId).HasColumnName("category_id");
+
+                entity.Property(e => e.Status).HasColumnName("status");
 
                 entity.Property(e => e.SubcategoryName)
                     .IsRequired()

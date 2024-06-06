@@ -20,12 +20,21 @@ namespace MoneyManager.ViewModels
         public ICommand ShowAccountViewCommand { get; }
         public ICommand ShowTransactionHistoryViewCommand { get; }
         public ICommand ShowDepositViewCommand { get; }
+        public ICommand ShowCategoryViewCommand { get; }
+
+        private void ShowCategoryView()
+        {
+            CurrentView = new CategoryView();
+        }
+
 
         public MainWindowViewModel()
         {
             ShowAccountViewCommand = new RelayCommand(_ => ShowAccountView());
             ShowTransactionHistoryViewCommand = new RelayCommand(_ => ShowTransactionHistoryView());
             ShowDepositViewCommand = new RelayCommand(_ => ShowDepositView());
+            ShowCategoryViewCommand = new RelayCommand(_ => ShowCategoryView());
+
 
             // Set default view
             ShowDepositView();

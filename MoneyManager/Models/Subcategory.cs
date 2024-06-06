@@ -17,6 +17,7 @@ namespace MoneyManager.Models
         public int SubcategoryId { get; set; }
         public string SubcategoryName { get; set; }
         public int CategoryId { get; set; }
+        public bool Status { get; set; }
 
         public virtual Category Category { get; set; }
         public virtual ICollection<BankOperation> BankOperation { get; set; }

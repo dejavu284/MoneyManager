@@ -17,15 +17,15 @@ using System.Windows.Shapes;
 namespace MoneyManager.Views
 {
     /// <summary>
-    /// Interaction logic for CategoryView.xaml
+    /// Interaction logic for AddCategoryView.xaml
     /// </summary>
-    public partial class CategoryView : UserControl
+    public partial class AddCategoryView : UserControl
     {
-        public CategoryView()
+        public AddCategoryView()
         {
             InitializeComponent();
-            DataContext = new CategoryViewModel();
         }
     }
+
 
 }

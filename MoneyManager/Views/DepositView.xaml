@@ -6,7 +6,6 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:MoneyManager.Views"
              xmlns:viewmodels="clr-namespace:MoneyManager.ViewModels"
-             d:DataContext="{d:DesignInstance Type=viewmodels:DepositViewModel}"
              d:DesignHeight="450" d:DesignWidth="1000">
     <Grid>
         <Grid.ColumnDefinitions>

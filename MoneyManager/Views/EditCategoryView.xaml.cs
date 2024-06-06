@@ -1,5 +1,4 @@
-﻿using MoneyManager.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,15 +16,13 @@ using System.Windows.Shapes;
 namespace MoneyManager.Views
 {
     /// <summary>
-    /// Interaction logic for CategoryView.xaml
+    /// Interaction logic for EditCategoryView.xaml
     /// </summary>
-    public partial class CategoryView : UserControl
+    public partial class EditCategoryView : UserControl
     {
-        public CategoryView()
+        public EditCategoryView()
         {
             InitializeComponent();
-            DataContext = new CategoryViewModel();
         }
     }
-
 }

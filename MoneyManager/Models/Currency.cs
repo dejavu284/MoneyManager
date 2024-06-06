@@ -17,6 +17,7 @@ namespace MoneyManager.Models
 
         public int CurrencyId { get; set; }
         public string CurrencyCode { get; set; }
+        public bool Status { get; set; }
 
         public virtual ICollection<Account> Account { get; set; }
         public virtual ICollection<Deposit> Deposit { get; set; }
