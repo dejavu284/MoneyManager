@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using MoneyManager.Data.Repositories.Base;
 using System.Runtime.Remoting.Contexts;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MoneyManager.Data.Repositories.Concrete
 {
@@ -10,6 +12,12 @@ namespace MoneyManager.Data.Repositories.Concrete
     {
         public CurrencyRepository(MoneyManagerContext context) : base(context)
         {
+        }
+        public override async Task<IEnumerable<Currency>> GetAllAsync()
+        {
+            return await _context.Currency
+                .Where(c => c.Status)
+                .ToListAsync();
         }
 
         public async Task<Currency> GetByCodeAsync(string code)

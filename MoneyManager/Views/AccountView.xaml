@@ -35,6 +35,7 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="0,10,0,10" Width="200">
             <Button Content="Add" Command="{Binding ShowAddAccountViewCommand}" Margin="5"/>
             <Button Content="Edit" Command="{Binding EditAccountCommand}" Margin="5" IsEnabled="{Binding IsAccountSelected}"/>
+            <Button Content="Delete" Command="{Binding DeleteAccountCommand}" Margin="5" IsEnabled="{Binding IsAccountSelected}"/>
         </StackPanel>
 
         <!-- ContentControl для отображения AddAccountView -->

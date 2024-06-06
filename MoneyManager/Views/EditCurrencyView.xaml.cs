@@ -1,5 +1,4 @@
-﻿using MoneyManager.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,15 +16,13 @@ using System.Windows.Shapes;
 namespace MoneyManager.Views
 {
     /// <summary>
-    /// Interaction logic for CurrencyView.xaml
+    /// Interaction logic for EditCurrencyView.xaml
     /// </summary>
-    public partial class CurrencyView : UserControl
+    public partial class EditCurrencyView : UserControl
     {
-        public CurrencyView()
+        public EditCurrencyView()
         {
             InitializeComponent();
-            DataContext = new CurrencyViewModel();
         }
     }
-
 }
