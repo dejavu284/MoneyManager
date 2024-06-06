@@ -1,14 +1,23 @@
-﻿using MoneyManager.Data.Repositories.Base;
-using MoneyManager.Models;
+﻿using MoneyManager.Models;
+using Microsoft.EntityFrameworkCore;
+using MoneyManager.Data.Repositories.Base;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace MoneyManager.Data.Repositories.Concrete
 {
-    public class SubcategoryRepository : Repository<Account>
+    public class SubcategoryRepository : Repository<Subcategory>
     {
         public SubcategoryRepository(MoneyManagerContext context) : base(context)
         {
         }
 
-        // Добавьте дополнительные методы для Account, если необходимо`
+        public override async Task<IEnumerable<Subcategory>> GetAllAsync()
+        {
+            return await _context.Subcategory
+                .Where(c => c.Status)
+                .ToListAsync();
+        }
     }
 }

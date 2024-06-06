@@ -2,6 +2,7 @@
 using MoneyManager.Views.Categorys;
 using MoneyManager.Views.Currencys;
 using MoneyManager.Views.Deposits;
+using MoneyManager.Views.Subcategories;
 using MoneyManager.Views;
 using System.ComponentModel;
 using System.Windows.Input;
@@ -25,17 +26,7 @@ namespace MoneyManager.ViewModels
         public ICommand ShowDepositViewCommand { get; }
         public ICommand ShowCategoryViewCommand { get; }
         public ICommand ShowCurrencyViewCommand { get; }
-
-        private void ShowCurrencyView()
-        {
-            CurrentView = new CurrencyView();
-        }
-
-        private void ShowCategoryView()
-        {
-            CurrentView = new CategoryView();
-        }
-
+        public ICommand ShowSubcategoryViewCommand { get; }
 
         public MainWindowViewModel()
         {
@@ -43,10 +34,10 @@ namespace MoneyManager.ViewModels
             ShowDepositViewCommand = new RelayCommand(_ => ShowDepositView());
             ShowCategoryViewCommand = new RelayCommand(_ => ShowCategoryView());
             ShowCurrencyViewCommand = new RelayCommand(_ => ShowCurrencyView());
-
+            ShowSubcategoryViewCommand = new RelayCommand(_ => ShowSubcategoryView());
 
             // Set default view
-            ShowDepositView();
+            ShowAccountView();
         }
 
         private void ShowAccountView()
@@ -58,6 +49,22 @@ namespace MoneyManager.ViewModels
         {
             CurrentView = new DepositView();
         }
+
+        private void ShowCategoryView()
+        {
+            CurrentView = new CategoryView();
+        }
+
+        private void ShowCurrencyView()
+        {
+            CurrentView = new CurrencyView();
+        }
+
+        private void ShowSubcategoryView()
+        {
+            CurrentView = new SubcategoryView();
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)

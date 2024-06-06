@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="MoneyManager.Views.Subcategories.SubcategoryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:viewmodels="clr-namespace:MoneyManager.ViewModels.Subcategories"
+             d:DesignHeight="450" d:DesignWidth="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Список подкатегорий -->
+        <ListView ItemsSource="{Binding Subcategorys}" SelectedItem="{Binding SelectedSubcategory}" Grid.Column="0" Grid.Row="0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding SubcategoryId}" Width="50"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding SubcategoryName}" Width="180"/>
+                    <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Category.CategoryName}" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!-- Кнопки управления -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="0,10,0,10">
+            <Button Content="Add" Command="{Binding ShowAddSubcategoryViewCommand}" Margin="5"/>
+            <Button Content="Edit" Command="{Binding EditSubcategoryCommand}" Margin="5" IsEnabled="{Binding IsSubcategorySelected}"/>
+            <Button Content="Delete" Command="{Binding DeleteSubcategoryCommand}" Margin="5" IsEnabled="{Binding IsSubcategorySelected}"/>
+        </StackPanel>
+
+        <!-- ContentControl для отображения AddSubcategoryView -->
+        <ContentControl Grid.Column="1" Grid.RowSpan="2" Content="{Binding CurrentViewModel}" />
+    </Grid>
+</UserControl>
