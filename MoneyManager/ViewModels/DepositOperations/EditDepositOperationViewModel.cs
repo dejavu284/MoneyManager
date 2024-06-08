@@ -89,7 +89,7 @@ namespace MoneyManager.ViewModels.DepositOperations
             var deposits = await _depositRepository.GetAllAsync();
             Deposits = new ObservableCollection<Deposit>(deposits);
 
-            OperationTypes = new ObservableCollection<string> { "пополнение", "снятие" };
+            OperationTypes = new ObservableCollection<string> { "Пополнение", "Снятие" };
         }
 
         protected virtual void OnPropertyChanged(string propertyName)

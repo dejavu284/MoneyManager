@@ -26,9 +26,6 @@
         <TextBlock Text="Operation Date:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" />
         <DatePicker SelectedDate="{Binding SelectedBankOperation.OperationDate}" Grid.Row="1" Grid.Column="1" Margin="10,2,0,2" />
 
-        <TextBlock Text="Description:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" />
-        <TextBox Text="{Binding SelectedBankOperation.Description}" Grid.Row="2" Grid.Column="1" Margin="10,2,0,2" />
-
         <TextBlock Text="Account:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" />
         <ComboBox ItemsSource="{Binding Accounts}" SelectedItem="{Binding SelectedBankOperation.Account}" DisplayMemberPath="AccountName" Grid.Row="3" Grid.Column="1" Margin="10,2,0,2" />
 

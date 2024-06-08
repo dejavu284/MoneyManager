@@ -89,7 +89,7 @@ namespace MoneyManager.ViewModels.BankOperations
             var subcategories = await _subcategoryRepository.GetAllAsync();
             Subcategories = new ObservableCollection<Subcategory>(subcategories);
 
-            OperationTypes = new ObservableCollection<string> { "пополнение", "снятие" };
+            OperationTypes = new ObservableCollection<string> { "Пополнение", "Снятие" };
         }
 
         protected virtual void OnPropertyChanged(string propertyName)

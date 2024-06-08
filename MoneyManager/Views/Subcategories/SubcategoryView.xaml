@@ -18,12 +18,28 @@
         </Grid.RowDefinitions>
 
         <!-- Список подкатегорий -->
-        <ListView ItemsSource="{Binding Subcategorys}" SelectedItem="{Binding SelectedSubcategory}" Grid.Column="0" Grid.Row="0">
+        <ListView ItemsSource="{Binding Subcategorys}" SelectedItem="{Binding SelectedSubcategory}" Grid.Column="0" Grid.Row="0" HorizontalContentAlignment="Center">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <!--<GridViewColumn Header="ID" DisplayMemberBinding="{Binding SubcategoryId}" Width="50"/>-->
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding SubcategoryName}" Width="180"/>
-                    <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Category.CategoryName}" Width="100"/>
+                    <GridViewColumn Header="Name" Width="180">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding SubcategoryName}" TextAlignment="Center" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Category" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Category.CategoryName}" TextAlignment="Center" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

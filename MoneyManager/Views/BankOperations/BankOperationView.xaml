@@ -18,20 +18,49 @@
         </Grid.RowDefinitions>
 
         <!-- Список банковских операций -->
-        <ListView ItemsSource="{Binding BankOperations}" SelectedItem="{Binding SelectedBankOperation}" Grid.Column="0" Grid.Row="0">
+        <ListView ItemsSource="{Binding BankOperations}" SelectedItem="{Binding SelectedBankOperation}" Grid.Column="0" Grid.Row="0" HorizontalContentAlignment="Center">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <!--<GridViewColumn Header="ID" DisplayMemberBinding="{Binding OperationId}" Width="50"/>-->
-                    <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding OperationAmount}" Width="100"/>
-                    <GridViewColumn Header="Date" Width="100">
-                        <GridViewColumn.DisplayMemberBinding>
-                            <Binding Path="OperationDate" StringFormat="{}{0:dd.MM.yyyy}" />
-                        </GridViewColumn.DisplayMemberBinding>
+                    <GridViewColumn Header="Amount" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding OperationAmount}" TextAlignment="Center" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}" Width="200"/>
-                    <GridViewColumn Header="Account" DisplayMemberBinding="{Binding Account.AccountName}" Width="100"/>
-                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding OperationType}" Width="100"/>
-                    <GridViewColumn Header="Subcategory" DisplayMemberBinding="{Binding Subcategory.SubcategoryName}" Width="100"/>
+                    <GridViewColumn Header="Date" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding OperationDate, StringFormat={}{0:dd.MM.yyyy}}" TextAlignment="Center" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Account" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Account.AccountName}" TextAlignment="Center" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Type" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding OperationType}" TextAlignment="Center" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Subcategory" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Subcategory.SubcategoryName}" TextAlignment="Center" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

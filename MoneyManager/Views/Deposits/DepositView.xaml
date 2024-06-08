@@ -19,25 +19,49 @@
         </Grid.RowDefinitions>
 
         <!-- Список вкладов -->
-        <ListView ItemsSource="{Binding Deposits}" SelectedItem="{Binding SelectedDeposit}" Grid.Column="0" Grid.Row="0">
+        <ListView ItemsSource="{Binding Deposits}" SelectedItem="{Binding SelectedDeposit}" Grid.Column="0" Grid.Row="0" HorizontalContentAlignment="Center">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <!--<GridViewColumn Header="ID" DisplayMemberBinding="{Binding DepositId}" Width="50"/>-->
-                    <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding DepositAmount}" Width="100"/>
-                    <GridViewColumn Header="Interest Rate" DisplayMemberBinding="{Binding InterestRate}" Width="100"/>
+                    <GridViewColumn Header="Amount" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding DepositAmount}" TextAlignment="Center" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Interest Rate" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding InterestRate}" TextAlignment="Center" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="Start Date" Width="100">
-                        <GridViewColumn.DisplayMemberBinding>
-                            <Binding Path="StartDate" StringFormat="{}{0:dd.MM.yyyy}" />
-                        </GridViewColumn.DisplayMemberBinding>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding StartDate, StringFormat={}{0:dd.MM.yyyy}}" TextAlignment="Center" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="End Date" Width="100">
-                        <GridViewColumn.DisplayMemberBinding>
-                            <Binding Path="EndDate" StringFormat="{}{0:dd.MM.yyyy}" />
-                        </GridViewColumn.DisplayMemberBinding>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding EndDate, StringFormat={}{0:dd.MM.yyyy}}" TextAlignment="Center" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <!--<GridViewColumn Header="Start Date" DisplayMemberBinding="{Binding StartDate}" Width="100"/>
-                    <GridViewColumn Header="End Date" DisplayMemberBinding="{Binding EndDate}" Width="100"/>-->
-                    <GridViewColumn Header="Currency" DisplayMemberBinding="{Binding Currency.CurrencyCode}" Width="100"/>
+                    <GridViewColumn Header="Currency" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Currency.CurrencyCode}" TextAlignment="Center" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

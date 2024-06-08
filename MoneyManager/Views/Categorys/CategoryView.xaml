@@ -19,11 +19,21 @@
         </Grid.RowDefinitions>
 
         <!-- Список категорий -->
-        <ListView ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}" Grid.Column="0" Grid.Row="0">
+        <ListView ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}" Grid.Column="0" Grid.Row="0" HorizontalContentAlignment="Center">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <!--<GridViewColumn Header="ID" DisplayMemberBinding="{Binding CategoryId}" Width="50"/>-->
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding CategoryName}" Width="200"/>
+                    <GridViewColumn Header="Name" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding CategoryName}" TextAlignment="Center" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

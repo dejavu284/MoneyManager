@@ -18,13 +18,35 @@
         </Grid.RowDefinitions>
 
         <!-- Список счетов -->
-        <ListView ItemsSource="{Binding Accounts}" SelectedItem="{Binding SelectedAccount}" Grid.Column="0" Grid.Row="0">
+        <ListView ItemsSource="{Binding Accounts}" SelectedItem="{Binding SelectedAccount}" Grid.Column="0" Grid.Row="0" HorizontalContentAlignment="Center">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <!--<GridViewColumn Header="ID" DisplayMemberBinding="{Binding AccountId}" Width="50"/>-->
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding AccountName}" Width="180"/>
-                    <GridViewColumn Header="Balance" DisplayMemberBinding="{Binding AccountBalance}" Width="100"/>
-                    <GridViewColumn Header="Currency" DisplayMemberBinding="{Binding Currency.CurrencyCode}" Width="100"/>
+                    <GridViewColumn Header="Name" Width="180">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding AccountName}" TextAlignment="Center" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Balance" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding AccountBalance}" TextAlignment="Center" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Currency" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Currency.CurrencyCode}" TextAlignment="Center" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

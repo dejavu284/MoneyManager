@@ -75,7 +75,7 @@ namespace MoneyManager.ViewModels.BankOperations
                 OperationDate = DateTime.Now // Устанавливаем текущую дату
             };
 
-            OperationTypes = new ObservableCollection<string> { "пополнение", "снятие" };
+            OperationTypes = new ObservableCollection<string> { "Пополнение", "Снятие" };
 
             AddBankOperationCommand = new RelayCommand(async _ => await AddBankOperation());
 
@@ -84,7 +84,7 @@ namespace MoneyManager.ViewModels.BankOperations
 
         private async Task AddBankOperation()
         {
-            if (NewBankOperation.OperationType == "снятие")
+            if (NewBankOperation.OperationType == "Снятие")
             {
                 if (NewBankOperation.Account.AccountBalance < NewBankOperation.OperationAmount)
                 {
@@ -93,7 +93,7 @@ namespace MoneyManager.ViewModels.BankOperations
                 }
                 NewBankOperation.Account.AccountBalance -= NewBankOperation.OperationAmount;
             }
-            else if (NewBankOperation.OperationType == "пополнение")
+            else if (NewBankOperation.OperationType == "Пополнение")
             {
                 NewBankOperation.Account.AccountBalance += NewBankOperation.OperationAmount;
             }

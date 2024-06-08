@@ -26,9 +26,6 @@
         <TextBlock Text="Operation Date:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" />
         <DatePicker SelectedDate="{Binding NewDepositOperation.OperationDate}" Grid.Row="1" Grid.Column="1" Margin="10,2,0,2" />
 
-        <TextBlock Text="Description:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" />
-        <TextBox Text="{Binding NewBankOperation.Description}" Grid.Row="2" Grid.Column="1" Margin="10,2,0,2" />
-
         <TextBlock Text="Deposit:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" />
         <ComboBox ItemsSource="{Binding Deposits}" SelectedItem="{Binding NewDepositOperation.Deposit}" DisplayMemberPath="DepositId" Grid.Row="3" Grid.Column="1" Margin="10,2,0,2" />
 

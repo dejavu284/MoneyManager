@@ -19,11 +19,22 @@
         </Grid.RowDefinitions>
 
         <!-- Список валют -->
-        <ListView ItemsSource="{Binding Currencies}" SelectedItem="{Binding SelectedCurrency}" Grid.Column="0" Grid.Row="0">
+        <ListView ItemsSource="{Binding Currencies}" SelectedItem="{Binding SelectedCurrency}" Grid.Column="0" Grid.Row="0" HorizontalContentAlignment="Center">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
                     <!--<GridViewColumn Header="ID" DisplayMemberBinding="{Binding CurrencyId}" Width="50"/>-->
-                    <GridViewColumn Header="Code" DisplayMemberBinding="{Binding CurrencyCode}" Width="200"/>
+                    <GridViewColumn Header="Code" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding CurrencyCode}" TextAlignment="Center" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
