@@ -43,9 +43,8 @@ namespace MoneyManager.ViewModels
             ShowBankOperationViewCommand = new RelayCommand(_ => ShowBankOperationView());
             ShowDepositOperationViewCommand = new RelayCommand(_ => ShowDepositOperationView());
 
-
             // Set default view
-            ShowDepositOperationView();
+            ShowDepositView();
         }
 
         private void ShowAccountView()
@@ -89,4 +88,5 @@ namespace MoneyManager.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
+
 }

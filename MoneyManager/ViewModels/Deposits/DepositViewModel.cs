@@ -55,6 +55,7 @@ namespace MoneyManager.ViewModels.Deposits
         public ICommand ShowAddDepositViewCommand { get; }
         public ICommand EditDepositCommand { get; }
         public ICommand DeleteDepositCommand { get; }
+        public ICommand ShowGenerateDepositsViewCommand { get; }
 
         public DepositViewModel()
         {
@@ -65,6 +66,7 @@ namespace MoneyManager.ViewModels.Deposits
             ShowAddDepositViewCommand = new RelayCommand(_ => ShowAddDepositView());
             EditDepositCommand = new RelayCommand(_ => ShowEditDepositView(), _ => IsDepositSelected);
             DeleteDepositCommand = new RelayCommand(async _ => await DeleteDeposit(), _ => IsDepositSelected);
+            ShowGenerateDepositsViewCommand = new RelayCommand(_ => ShowGenerateDepositsView());
 
             LoadDeposits();
 
@@ -80,7 +82,7 @@ namespace MoneyManager.ViewModels.Deposits
             return new MoneyManagerContext(optionsBuilder.Options);
         }
 
-        private async void LoadDeposits()
+        public async void LoadDeposits()
         {
             var deposits = await _depositRepository.GetAllAsync();
             Deposits = new ObservableCollection<Deposit>(deposits);
@@ -133,6 +135,12 @@ namespace MoneyManager.ViewModels.Deposits
                     OnPropertyChanged(nameof(IsDepositSelected));
                 }
             }
+        }
+
+        private void ShowGenerateDepositsView()
+        {
+            var generateDepositsViewModel = new GenerateDepositsViewModel(_depositRepository, _currencyRepository, this);
+            CurrentViewModel = generateDepositsViewModel;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

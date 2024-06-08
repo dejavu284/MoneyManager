@@ -165,6 +165,7 @@
     <Compile Include="Data\Repositories\Concrete\SubcategoryRepository.cs" />
     <Compile Include="Data\Repositories\Interfaces\IRepository.cs" />
     <Compile Include="Models\BankOperation.cs" />
+    <Compile Include="Models\Generators\DepositBuilder.cs" />
     <Compile Include="ViewModels\Accounts\AccountViewModel.cs" />
     <Compile Include="ViewModels\Accounts\AddAccountViewModel.cs" />
     <Compile Include="ViewModels\BankOperations\AddBankOperationViewModel.cs" />
@@ -185,6 +186,7 @@
     <Compile Include="ViewModels\Categorys\EditCategoryViewModel.cs" />
     <Compile Include="ViewModels\Currencys\EditCurrencyViewModel.cs" />
     <Compile Include="ViewModels\Deposits\EditDepositViewModel.cs" />
+    <Compile Include="ViewModels\Deposits\GenerateDepositsViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\Subcategories\AddSubcategoryViewModel.cs" />
@@ -249,6 +251,9 @@
     </Compile>
     <Compile Include="Views\Deposits\EditDepositView.xaml.cs">
       <DependentUpon>EditDepositView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Deposits\GenerateDepositsView.xaml.cs">
+      <DependentUpon>GenerateDepositsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Subcategories\AddSubcategoryView.xaml.cs">
       <DependentUpon>AddSubcategoryView.xaml</DependentUpon>
@@ -320,6 +325,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Deposits\EditDepositView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Deposits\GenerateDepositsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

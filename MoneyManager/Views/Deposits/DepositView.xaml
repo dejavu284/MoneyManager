@@ -78,6 +78,7 @@
             <Button Content="Создать вклад" Command="{Binding ShowAddDepositViewCommand}" Margin="5"/>
             <Button Content="Изменить вклад" Command="{Binding EditDepositCommand}" Margin="5" IsEnabled="{Binding IsDepositSelected}"/>
             <Button Content="Удалить вклад" Command="{Binding DeleteDepositCommand}" Margin="5" IsEnabled="{Binding IsDepositSelected}"/>
+            <Button Content="Сгенерировать вклады" Command="{Binding ShowGenerateDepositsViewCommand}" Margin="5"/>
         </StackPanel>
 
         <!-- ContentControl для отображения AddDepositView -->
