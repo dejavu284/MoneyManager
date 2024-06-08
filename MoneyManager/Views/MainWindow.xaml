@@ -62,6 +62,9 @@
         <DataTemplate DataType="{x:Type viewmodelsbankoperations:BankOperationViewModel}">
             <local6:BankOperationView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodelsbankoperations:DateRangeSelectionViewModel}">
+            <local6:DateRangeSelectionView />
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>

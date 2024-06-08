@@ -22,11 +22,21 @@
         <ListView ItemsSource="{Binding Deposits}" SelectedItem="{Binding SelectedDeposit}" Grid.Column="0" Grid.Row="0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding DepositId}" Width="50"/>
+                    <!--<GridViewColumn Header="ID" DisplayMemberBinding="{Binding DepositId}" Width="50"/>-->
                     <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding DepositAmount}" Width="100"/>
                     <GridViewColumn Header="Interest Rate" DisplayMemberBinding="{Binding InterestRate}" Width="100"/>
-                    <GridViewColumn Header="Start Date" DisplayMemberBinding="{Binding StartDate}" Width="100"/>
-                    <GridViewColumn Header="End Date" DisplayMemberBinding="{Binding EndDate}" Width="100"/>
+                    <GridViewColumn Header="Start Date" Width="100">
+                        <GridViewColumn.DisplayMemberBinding>
+                            <Binding Path="StartDate" StringFormat="{}{0:dd.MM.yyyy}" />
+                        </GridViewColumn.DisplayMemberBinding>
+                    </GridViewColumn>
+                    <GridViewColumn Header="End Date" Width="100">
+                        <GridViewColumn.DisplayMemberBinding>
+                            <Binding Path="EndDate" StringFormat="{}{0:dd.MM.yyyy}" />
+                        </GridViewColumn.DisplayMemberBinding>
+                    </GridViewColumn>
+                    <!--<GridViewColumn Header="Start Date" DisplayMemberBinding="{Binding StartDate}" Width="100"/>
+                    <GridViewColumn Header="End Date" DisplayMemberBinding="{Binding EndDate}" Width="100"/>-->
                     <GridViewColumn Header="Currency" DisplayMemberBinding="{Binding Currency.CurrencyCode}" Width="100"/>
                 </GridView>
             </ListView.View>

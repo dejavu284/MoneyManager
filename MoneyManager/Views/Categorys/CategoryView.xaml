@@ -22,7 +22,7 @@
         <ListView ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}" Grid.Column="0" Grid.Row="0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding CategoryId}" Width="50"/>
+                    <!--<GridViewColumn Header="ID" DisplayMemberBinding="{Binding CategoryId}" Width="50"/>-->
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding CategoryName}" Width="200"/>
                 </GridView>
             </ListView.View>

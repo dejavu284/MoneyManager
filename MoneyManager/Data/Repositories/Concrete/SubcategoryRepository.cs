@@ -16,6 +16,7 @@ namespace MoneyManager.Data.Repositories.Concrete
         public override async Task<IEnumerable<Subcategory>> GetAllAsync()
         {
             return await _context.Subcategory
+                .Include(c => c.Category)
                 .Where(c => c.Status)
                 .ToListAsync();
         }

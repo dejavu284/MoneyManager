@@ -168,6 +168,7 @@
     <Compile Include="ViewModels\Accounts\AddAccountViewModel.cs" />
     <Compile Include="ViewModels\BankOperations\AddBankOperationViewModel.cs" />
     <Compile Include="ViewModels\BankOperations\BankOperationViewModel.cs" />
+    <Compile Include="ViewModels\BankOperations\DateRangeSelectionViewModel.cs" />
     <Compile Include="ViewModels\BankOperations\EditBankOperationViewModel.cs" />
     <Compile Include="ViewModels\Categorys\AddCategoryViewModel.cs" />
     <Compile Include="ViewModels\Currencys\AddCurrencyViewModel.cs" />
@@ -195,6 +196,9 @@
     </Compile>
     <Compile Include="Views\BankOperations\BankOperationView.xaml.cs">
       <DependentUpon>BankOperationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BankOperations\DateRangeSelectionView.xaml.cs">
+      <DependentUpon>DateRangeSelectionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\BankOperations\EditBankOperationView.xaml.cs">
       <DependentUpon>EditBankOperationView.xaml</DependentUpon>
@@ -247,6 +251,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\BankOperations\BankOperationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BankOperations\DateRangeSelectionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

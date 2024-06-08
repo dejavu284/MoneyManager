@@ -22,7 +22,7 @@
         <ListView ItemsSource="{Binding Currencies}" SelectedItem="{Binding SelectedCurrency}" Grid.Column="0" Grid.Row="0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding CurrencyId}" Width="50"/>
+                    <!--<GridViewColumn Header="ID" DisplayMemberBinding="{Binding CurrencyId}" Width="50"/>-->
                     <GridViewColumn Header="Code" DisplayMemberBinding="{Binding CurrencyCode}" Width="200"/>
                 </GridView>
             </ListView.View>

@@ -4,6 +4,7 @@ using MoneyManager.Data.Repositories.Base;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System;
 
 namespace MoneyManager.Data.Repositories.Concrete
 {
@@ -30,6 +31,12 @@ namespace MoneyManager.Data.Repositories.Concrete
         {
             return await _context.BankOperation
                 .Where(b => b.SubcategoryId == subcategoryId)
+                .ToListAsync();
+        }
+        public async Task<IEnumerable<BankOperation>> GetOperationsForPeriodAsync(DateTime startDate, DateTime endDate)
+        {
+            return await _context.BankOperation
+                .Where(bo => bo.OperationDate >= startDate && bo.OperationDate <= endDate)
                 .ToListAsync();
         }
     }

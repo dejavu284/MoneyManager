@@ -21,7 +21,7 @@
         <ListView ItemsSource="{Binding Subcategorys}" SelectedItem="{Binding SelectedSubcategory}" Grid.Column="0" Grid.Row="0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding SubcategoryId}" Width="50"/>
+                    <!--<GridViewColumn Header="ID" DisplayMemberBinding="{Binding SubcategoryId}" Width="50"/>-->
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding SubcategoryName}" Width="180"/>
                     <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Category.CategoryName}" Width="100"/>
                 </GridView>

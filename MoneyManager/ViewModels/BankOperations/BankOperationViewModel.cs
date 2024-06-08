@@ -2,12 +2,13 @@
 using MoneyManager.Data.Repositories.Concrete;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Configuration;
 using System.Windows.Input;
+using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Windows;
 using MoneyManager.Data;
+using System;
 
 namespace MoneyManager.ViewModels.BankOperations
 {
@@ -56,6 +57,8 @@ namespace MoneyManager.ViewModels.BankOperations
         public ICommand ShowAddBankOperationViewCommand { get; }
         public ICommand EditBankOperationCommand { get; }
         public ICommand DeleteBankOperationCommand { get; }
+        public ICommand ShowDateRangeSelectionViewCommand { get; }
+        public ICommand LoadOperationsForPeriodCommand { get; }
 
         public BankOperationViewModel()
         {
@@ -67,6 +70,8 @@ namespace MoneyManager.ViewModels.BankOperations
             ShowAddBankOperationViewCommand = new RelayCommand(_ => ShowAddBankOperationView());
             EditBankOperationCommand = new RelayCommand(_ => ShowEditBankOperationView(), _ => IsBankOperationSelected);
             DeleteBankOperationCommand = new RelayCommand(async _ => await DeleteBankOperation(), _ => IsBankOperationSelected);
+            ShowDateRangeSelectionViewCommand = new RelayCommand(_ => ShowDateRangeSelectionView());
+            LoadOperationsForPeriodCommand = new RelayCommand(async _ => await LoadOperationsForPeriod());
 
             LoadBankOperations();
 
@@ -124,7 +129,6 @@ namespace MoneyManager.ViewModels.BankOperations
         {
             if (SelectedBankOperation != null)
             {
-                // Показать всплывающее окно с подтверждением
                 var result = MessageBox.Show("Вы уверены, что хотите удалить данную операцию?", "Подтверждение удаления", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
                 if (result == MessageBoxResult.Yes)
@@ -137,11 +141,54 @@ namespace MoneyManager.ViewModels.BankOperations
             }
         }
 
+        private void ShowDateRangeSelectionView()
+        {
+            var dateRangeSelectionViewModel = new DateRangeSelectionViewModel();
+            dateRangeSelectionViewModel.DateRangeSelected += async (s, e) =>
+            {
+                StartDate = e.StartDate;
+                EndDate = e.EndDate;
+                await LoadOperationsForPeriod();
+                CurrentViewModel = null;
+            };
+            CurrentViewModel = dateRangeSelectionViewModel;
+        }
+
+        private DateTime? _startDate;
+        public DateTime? StartDate
+        {
+            get => _startDate;
+            set
+            {
+                _startDate = value;
+                OnPropertyChanged(nameof(StartDate));
+            }
+        }
+
+        private DateTime? _endDate;
+        public DateTime? EndDate
+        {
+            get => _endDate;
+            set
+            {
+                _endDate = value;
+                OnPropertyChanged(nameof(EndDate));
+            }
+        }
+
+        private async Task LoadOperationsForPeriod()
+        {
+            if (StartDate.HasValue && EndDate.HasValue)
+            {
+                var operations = await _bankOperationRepository.GetOperationsForPeriodAsync(StartDate.Value, EndDate.Value);
+                BankOperations = new ObservableCollection<BankOperation>(operations);
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-
 }
