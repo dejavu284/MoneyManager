@@ -13,9 +13,9 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Category Name:" Grid.Row="0" VerticalAlignment="Center" />
+        <TextBlock Text="Название категории:" Grid.Row="0" VerticalAlignment="Center" />
         <TextBox Text="{Binding EditedCategory.CategoryName}" Grid.Row="0" Margin="112,14,0,10" />
 
-        <Button Content="Save Changes" Command="{Binding EditCategoryCommand}" Grid.Row="2" HorizontalAlignment="Right" Margin="0,10,111,0" />
+        <Button Content="Изменить категорию" Command="{Binding EditCategoryCommand}" Grid.Row="2" HorizontalAlignment="Right" Margin="0,10,111,0" />
     </Grid>
 </UserControl>

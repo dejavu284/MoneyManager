@@ -17,7 +17,6 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!-- Список операций с вкладами -->
         <ListView ItemsSource="{Binding DepositOperations}" SelectedItem="{Binding SelectedDepositOperation}" Grid.Column="0" Grid.Row="0" HorizontalContentAlignment="Center">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
@@ -26,35 +25,35 @@
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Amount" Width="100">
+                    <GridViewColumn Header="Сумма операции" Width="120">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding OperationAmount}" TextAlignment="Center" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Date" Width="100">
+                    <GridViewColumn Header="Дата операции" Width="120">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding OperationDate, StringFormat={}{0:dd.MM.yyyy}}" TextAlignment="Center" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Account" Width="150">
+                    <GridViewColumn Header="Название счёта" Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Account.AccountName}" TextAlignment="Center" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Type" Width="100">
+                    <GridViewColumn Header="Тип операции" Width="120">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding OperationType}" TextAlignment="Center" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Deposit" Width="180">
+                    <GridViewColumn Header="Название вклада" Width="180">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Deposit.DepositName}" TextAlignment="Center" />
@@ -65,7 +64,6 @@
             </ListView.View>
         </ListView>
 
-        <!-- Кнопки управления -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="0,10,0,10">
             <Button Content="Перевод между своими счетами" Command="{Binding ShowAddDepositOperationViewCommand}" Margin="5"/>
             <Button Content="Отредактировать перевод" Command="{Binding EditDepositOperationCommand}" Margin="5" IsEnabled="{Binding IsDepositOperationSelected}"/>
@@ -73,7 +71,6 @@
             <Button Content="Выбрать период" Command="{Binding ShowDateRangeSelectionViewCommand}" Margin="5"/>
         </StackPanel>
 
-        <!-- ContentControl для отображения AddDepositOperationView -->
         <ContentControl Grid.Column="1" Grid.RowSpan="2" Content="{Binding CurrentViewModel}" />
     </Grid>
 </UserControl>

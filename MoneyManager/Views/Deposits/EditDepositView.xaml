@@ -15,21 +15,21 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Deposit Amount:" Grid.Row="0" VerticalAlignment="Center" />
+        <TextBlock Text="Сумма вклада:" Grid.Row="0" VerticalAlignment="Center" />
         <TextBox Text="{Binding Deposit.DepositAmount}" Grid.Row="0" Margin="112,14,0,10" />
 
-        <TextBlock Text="Interest Rate:" Grid.Row="1" VerticalAlignment="Center" />
+        <TextBlock Text="Процентная ставка:" Grid.Row="1" VerticalAlignment="Center" />
         <TextBox Text="{Binding Deposit.InterestRate}" Grid.Row="1" Margin="112,14,0,10" />
 
-        <TextBlock Text="Start Date:" Grid.Row="2" VerticalAlignment="Center" />
+        <TextBlock Text="Дата открытия:" Grid.Row="2" VerticalAlignment="Center" />
         <TextBox Text="{Binding Deposit.StartDate}" Grid.Row="2" Margin="112,14,0,10" />
 
-        <TextBlock Text="End Date:" Grid.Row="3" VerticalAlignment="Center" />
-        <TextBox Text="{Binding Deposit.EndDate}" Grid.Row="3" Margin="112,14,0,10" />
+        <TextBlock Text="Плановая дата закрытия:" Grid.Row="3" VerticalAlignment="Center" />
+        <TextBox Text="{Binding Deposit.EndDate}" Grid.Row="3" Margin="146,14,0,10" />
 
-        <TextBlock Text="Currency Code:" Grid.Row="4" VerticalAlignment="Center" />
+        <TextBlock Text="Код валюты:" Grid.Row="4" VerticalAlignment="Center" />
         <TextBox Text="{Binding CurrencyCode}" Grid.Row="4" Margin="112,14,0,10" />
 
-        <Button Content="Update Deposit" Command="{Binding UpdateDepositCommand}" Grid.Row="5" HorizontalAlignment="Right" Margin="0,10,111,0" />
+        <Button Content="Изменить вклад" Command="{Binding UpdateDepositCommand}" Grid.Row="5" HorizontalAlignment="Right" Margin="0,10,111,0" />
     </Grid>
 </UserControl>

@@ -20,10 +20,10 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Operation Amount:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" />
+        <TextBlock Text="Сумма операции:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" />
         <TextBox Text="{Binding NewDepositOperation.OperationAmount}" Grid.Row="0" Grid.Column="1" Margin="10,2,0,2" />
 
-        <TextBlock Text="Operation Date:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" />
+        <TextBlock Text="Дата операции:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" />
         <DatePicker SelectedDate="{Binding NewDepositOperation.OperationDate}" Grid.Row="1" Grid.Column="1" Margin="10,2,0,2" />
 
         <TextBlock Text="Название вклада:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" />

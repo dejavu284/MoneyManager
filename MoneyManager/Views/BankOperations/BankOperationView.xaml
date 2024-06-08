@@ -40,7 +40,7 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Название счёта" Width="120">
+                    <GridViewColumn Header="Название счёта" Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Account.AccountName}" TextAlignment="Center" />

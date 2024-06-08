@@ -27,7 +27,7 @@
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" Width="200">
+                    <GridViewColumn Header="Название категории" Width="200">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding CategoryName}" TextAlignment="Center" />

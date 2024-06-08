@@ -12,9 +12,9 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Currency Code:" Grid.Row="0" VerticalAlignment="Center" />
+        <TextBlock Text="Код валюты:" Grid.Row="0" VerticalAlignment="Center" />
         <TextBox Text="{Binding NewCurrency.CurrencyCode}" Grid.Row="0" Margin="112,14,0,10" />
 
-        <Button Content="Add Currency" Command="{Binding AddCurrencyCommand}" Grid.Row="2" HorizontalAlignment="Right" Margin="0,10,111,0" />
+        <Button Content="Создать валюту" Command="{Binding AddCurrencyCommand}" Grid.Row="2" HorizontalAlignment="Right" Margin="0,10,111,0" />
     </Grid>
 </UserControl>
