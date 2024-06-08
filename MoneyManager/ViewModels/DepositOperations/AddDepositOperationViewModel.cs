@@ -86,19 +86,27 @@ namespace MoneyManager.ViewModels.DepositOperations
         {
             if (NewDepositOperation.OperationType == "Снятие")
             {
+                if (NewDepositOperation.Deposit.DepositAmount < NewDepositOperation.OperationAmount)
+                {
+                    MessageBox.Show("Недостаточно средств на вкладе для выполнения операции.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                NewDepositOperation.Deposit.DepositAmount -= NewDepositOperation.OperationAmount;
+                NewDepositOperation.Account.AccountBalance += NewDepositOperation.OperationAmount;
+            }
+            else if (NewDepositOperation.OperationType == "Пополнение")
+            {
                 if (NewDepositOperation.Account.AccountBalance < NewDepositOperation.OperationAmount)
                 {
                     MessageBox.Show("Недостаточно средств на счету для выполнения операции.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 NewDepositOperation.Account.AccountBalance -= NewDepositOperation.OperationAmount;
-            }
-            else if (NewDepositOperation.OperationType == "Пополнение")
-            {
-                NewDepositOperation.Account.AccountBalance += NewDepositOperation.OperationAmount;
+                NewDepositOperation.Deposit.DepositAmount += NewDepositOperation.OperationAmount;
             }
 
             await _accountRepository.UpdateAsync(NewDepositOperation.Account);
+            await _depositRepository.UpdateAsync(NewDepositOperation.Deposit);
             await _depositOperationRepository.AddAsync(NewDepositOperation);
             DepositOperationAdded?.Invoke(this, NewDepositOperation);
         }

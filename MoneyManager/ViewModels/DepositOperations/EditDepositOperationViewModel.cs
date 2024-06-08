@@ -5,6 +5,7 @@ using System.Windows.Input;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System;
+using System.Windows;
 
 namespace MoneyManager.ViewModels.DepositOperations
 {
@@ -70,6 +71,8 @@ namespace MoneyManager.ViewModels.DepositOperations
             _depositRepository = depositRepository;
 
             SelectedDepositOperation = selectedDepositOperation;
+            OperationTypes = new ObservableCollection<string> { "Пополнение", "Снятие" };
+
             UpdateDepositOperationCommand = new RelayCommand(async _ => await UpdateDepositOperation());
 
             LoadData();
@@ -77,6 +80,29 @@ namespace MoneyManager.ViewModels.DepositOperations
 
         private async Task UpdateDepositOperation()
         {
+            if (SelectedDepositOperation.OperationType == "Снятие")
+            {
+                if (SelectedDepositOperation.Deposit.DepositAmount < SelectedDepositOperation.OperationAmount)
+                {
+                    MessageBox.Show("Недостаточно средств на вкладе для выполнения операции.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                SelectedDepositOperation.Deposit.DepositAmount -= SelectedDepositOperation.OperationAmount;
+                SelectedDepositOperation.Account.AccountBalance += SelectedDepositOperation.OperationAmount;
+            }
+            else if (SelectedDepositOperation.OperationType == "Пополнение")
+            {
+                if (SelectedDepositOperation.Account.AccountBalance < SelectedDepositOperation.OperationAmount)
+                {
+                    MessageBox.Show("Недостаточно средств на счету для выполнения операции.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                SelectedDepositOperation.Account.AccountBalance -= SelectedDepositOperation.OperationAmount;
+                SelectedDepositOperation.Deposit.DepositAmount += SelectedDepositOperation.OperationAmount;
+            }
+
+            await _accountRepository.UpdateAsync(SelectedDepositOperation.Account);
+            await _depositRepository.UpdateAsync(SelectedDepositOperation.Deposit);
             await _depositOperationRepository.UpdateAsync(SelectedDepositOperation);
             DepositOperationUpdated?.Invoke(this, SelectedDepositOperation);
         }
@@ -88,8 +114,6 @@ namespace MoneyManager.ViewModels.DepositOperations
 
             var deposits = await _depositRepository.GetAllAsync();
             Deposits = new ObservableCollection<Deposit>(deposits);
-
-            OperationTypes = new ObservableCollection<string> { "Пополнение", "Снятие" };
         }
 
         protected virtual void OnPropertyChanged(string propertyName)
