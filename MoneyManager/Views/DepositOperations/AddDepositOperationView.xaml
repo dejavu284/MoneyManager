@@ -27,7 +27,7 @@
         <DatePicker SelectedDate="{Binding NewDepositOperation.OperationDate}" Grid.Row="1" Grid.Column="1" Margin="10,2,0,2" />
 
         <TextBlock Text="Название вклада:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" />
-        <ComboBox ItemsSource="{Binding Deposits}" SelectedItem="{Binding NewDepositOperation.Deposit}" DisplayMemberPath="DepositId" Grid.Row="3" Grid.Column="1" Margin="10,2,0,2" />
+        <ComboBox ItemsSource="{Binding Deposits}" SelectedItem="{Binding NewDepositOperation.Deposit}" DisplayMemberPath="DepositName" Grid.Row="3" Grid.Column="1" Margin="10,2,0,2" />
 
         <TextBlock Text="Название счёта:" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" />
         <ComboBox ItemsSource="{Binding Accounts}" SelectedItem="{Binding NewDepositOperation.Account}" DisplayMemberPath="AccountName" Grid.Row="4" Grid.Column="1" Margin="10,2,0,2" />
