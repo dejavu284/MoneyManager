@@ -1,5 +1,5 @@
-﻿using MoneyManager.ViewModels.DepositOperations;
-
+﻿using MoneyManager.ViewModels.BankOperations;
+using MoneyManager.ViewModels.DepositOperations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,18 +15,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MoneyManager.Views.Categorys
+namespace MoneyManager.Views.DepositOperations
 {
     /// <summary>
-    /// Interaction logic for AddCategoryView.xaml
+    /// Interaction logic for DepositOperationView.xaml
     /// </summary>
-    public partial class AddCategoryView : UserControl
+    public partial class DepositOperationView : UserControl
     {
-        public AddCategoryView()
+        public DepositOperationView()
         {
             InitializeComponent();
+            DataContext = new DepositOperationViewModel();
         }
     }
-
-
 }

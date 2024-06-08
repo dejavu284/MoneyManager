@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="MoneyManager.Views.DepositOperations.AddDepositOperationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="400" d:DesignWidth="300">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Operation Amount:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" />
+        <TextBox Text="{Binding NewDepositOperation.OperationAmount}" Grid.Row="0" Grid.Column="1" Margin="10,2,0,2" />
+
+        <TextBlock Text="Operation Date:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" />
+        <DatePicker SelectedDate="{Binding NewDepositOperation.OperationDate}" Grid.Row="1" Grid.Column="1" Margin="10,2,0,2" />
+
+        <TextBlock Text="Description:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" />
+        <TextBox Text="{Binding NewBankOperation.Description}" Grid.Row="2" Grid.Column="1" Margin="10,2,0,2" />
+
+        <TextBlock Text="Deposit:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" />
+        <ComboBox ItemsSource="{Binding Deposits}" SelectedItem="{Binding NewDepositOperation.Deposit}" DisplayMemberPath="DepositId" Grid.Row="3" Grid.Column="1" Margin="10,2,0,2" />
+
+        <TextBlock Text="Account:" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" />
+        <ComboBox ItemsSource="{Binding Accounts}" SelectedItem="{Binding NewDepositOperation.Account}" DisplayMemberPath="AccountName" Grid.Row="4" Grid.Column="1" Margin="10,2,0,2" />
+
+        <TextBlock Text="Type:" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" />
+        <ComboBox ItemsSource="{Binding OperationTypes}" SelectedItem="{Binding NewDepositOperation.OperationType}" Grid.Row="5" Grid.Column="1" Margin="10,2,0,2" />
+
+        <Button Content="Add Deposit Operation" Command="{Binding AddDepositOperationCommand}" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10,10,10,0" />
+    </Grid>
+</UserControl>

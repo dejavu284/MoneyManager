@@ -33,7 +33,7 @@
         <ComboBox ItemsSource="{Binding Accounts}" SelectedItem="{Binding SelectedBankOperation.Account}" DisplayMemberPath="AccountName" Grid.Row="3" Grid.Column="1" Margin="10,2,0,2" />
 
         <TextBlock Text="Type:" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" />
-        <TextBox Text="{Binding SelectedBankOperation.OperationType}" Grid.Row="4" Grid.Column="1" Margin="10,2,0,2" />
+        <ComboBox ItemsSource="{Binding OperationTypes}" SelectedItem="{Binding SelectedBankOperation.OperationType}" Grid.Row="4" Grid.Column="1" Margin="10,2,0,2" />
 
         <TextBlock Text="Subcategory:" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" />
         <ComboBox ItemsSource="{Binding Subcategories}" SelectedItem="{Binding SelectedBankOperation.Subcategory}" DisplayMemberPath="SubcategoryName" Grid.Row="5" Grid.Column="1" Margin="10,2,0,2" />

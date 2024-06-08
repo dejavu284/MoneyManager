@@ -1,6 +1,4 @@
-﻿using MoneyManager.ViewModels.DepositOperations;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,18 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MoneyManager.Views.Categorys
+namespace MoneyManager.Views.DepositOperations
 {
     /// <summary>
-    /// Interaction logic for AddCategoryView.xaml
+    /// Interaction logic for EditDepositOperationView.xaml
     /// </summary>
-    public partial class AddCategoryView : UserControl
+    public partial class EditDepositOperationView : UserControl
     {
-        public AddCategoryView()
+        public EditDepositOperationView()
         {
             InitializeComponent();
         }
     }
-
-
 }

@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="MoneyManager.Views.DepositOperations.DepositOperationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:viewmodels="clr-namespace:MoneyManager.ViewModels.DepositOperations"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Список операций по вкладам -->
+        <ListView ItemsSource="{Binding DepositOperations}" SelectedItem="{Binding SelectedDepositOperation}" Grid.Column="0" Grid.Row="0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding OperationAmount}" Width="100"/>
+                    <GridViewColumn Header="Date" Width="100">
+                        <GridViewColumn.DisplayMemberBinding>
+                            <Binding Path="OperationDate" StringFormat="{}{0:dd.MM.yyyy}" />
+                        </GridViewColumn.DisplayMemberBinding>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}" Width="200"/>
+                    <GridViewColumn Header="Account" DisplayMemberBinding="{Binding Account.AccountName}" Width="100"/>
+                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding OperationType}" Width="100"/>
+                    <GridViewColumn Header="Deposit" DisplayMemberBinding="{Binding Deposit.DepositId}" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!-- Кнопки управления -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="0,10,0,10" Width="300">
+            <Button Content="Add" Command="{Binding ShowAddDepositOperationViewCommand}" Margin="5"/>
+            <Button Content="Edit" Command="{Binding EditDepositOperationCommand}" Margin="5" IsEnabled="{Binding IsDepositOperationSelected}"/>
+            <Button Content="Delete" Command="{Binding DeleteDepositOperationCommand}" Margin="5" IsEnabled="{Binding IsDepositOperationSelected}"/>
+            <Button Content="Выбрать период" Command="{Binding ShowDateRangeSelectionViewCommand}" Margin="5"/>
+        </StackPanel>
+
+        <!-- ContentControl для отображения AddDepositOperationView -->
+        <ContentControl Grid.Column="1" Grid.RowSpan="2" Content="{Binding CurrentViewModel}" />
+    </Grid>
+</UserControl>

@@ -11,12 +11,14 @@
         xmlns:viewmodelsdeposits="clr-namespace:MoneyManager.ViewModels.Deposits"
         xmlns:viewmodelssubcategories="clr-namespace:MoneyManager.ViewModels.Subcategories"
         xmlns:viewmodelsbankoperations="clr-namespace:MoneyManager.ViewModels.BankOperations"
+        xmlns:viewmodelsdepositoperations="clr-namespace:MoneyManager.ViewModels.DepositOperations"
         xmlns:local1="clr-namespace:MoneyManager.Views.Accounts"
         xmlns:local2="clr-namespace:MoneyManager.Views.Deposits"
         xmlns:local3="clr-namespace:MoneyManager.Views.Categorys"
         xmlns:local4="clr-namespace:MoneyManager.Views.Currencys"
         xmlns:local5="clr-namespace:MoneyManager.Views.Subcategories"
         xmlns:local6="clr-namespace:MoneyManager.Views.BankOperations"
+        xmlns:local7="clr-namespace:MoneyManager.Views.DepositOperations"
         mc:Ignorable="d"
         Title="MoneyManager" Height="600" Width="1200">
     <Window.Resources>
@@ -65,6 +67,18 @@
         <DataTemplate DataType="{x:Type viewmodelsbankoperations:DateRangeSelectionViewModel}">
             <local6:DateRangeSelectionView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodelsdepositoperations:AddDepositOperationViewModel}">
+            <local7:AddDepositOperationView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodelsdepositoperations:EditDepositOperationViewModel}">
+            <local7:EditDepositOperationView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodelsdepositoperations:DepositOperationViewModel}">
+            <local7:DepositOperationView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodelsdepositoperations:DateRangeSelectionViewModel}">
+            <local7:DateRangeSelectionView />
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
@@ -81,6 +95,7 @@
             <Button Content="Currencies" Command="{Binding ShowCurrencyViewCommand}"/>
             <Button Content="Subcategories" Command="{Binding ShowSubcategoryViewCommand}"/>
             <Button Content="Bank Operations" Command="{Binding ShowBankOperationViewCommand}"/>
+            <Button Content="Deposit Operations" Command="{Binding ShowDepositOperationViewCommand}"/>
             <!-- Добавьте другие кнопки навигации здесь -->
         </StackPanel>
 

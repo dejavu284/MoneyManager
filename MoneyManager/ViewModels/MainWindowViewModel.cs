@@ -3,10 +3,11 @@ using MoneyManager.Views.Categorys;
 using MoneyManager.Views.Currencys;
 using MoneyManager.Views.Deposits;
 using MoneyManager.Views.Subcategories;
+using MoneyManager.Views.BankOperations;
+using MoneyManager.Views.DepositOperations;
 using MoneyManager.Views;
 using System.ComponentModel;
 using System.Windows.Input;
-using MoneyManager.Views.BankOperations;
 
 namespace MoneyManager.ViewModels
 {
@@ -29,6 +30,7 @@ namespace MoneyManager.ViewModels
         public ICommand ShowCurrencyViewCommand { get; }
         public ICommand ShowSubcategoryViewCommand { get; }
         public ICommand ShowBankOperationViewCommand { get; }
+        public ICommand ShowDepositOperationViewCommand { get; }
 
 
         public MainWindowViewModel()
@@ -39,10 +41,11 @@ namespace MoneyManager.ViewModels
             ShowCurrencyViewCommand = new RelayCommand(_ => ShowCurrencyView());
             ShowSubcategoryViewCommand = new RelayCommand(_ => ShowSubcategoryView());
             ShowBankOperationViewCommand = new RelayCommand(_ => ShowBankOperationView());
+            ShowDepositOperationViewCommand = new RelayCommand(_ => ShowDepositOperationView());
 
 
             // Set default view
-            ShowBankOperationView();
+            ShowDepositOperationView();
         }
 
         private void ShowAccountView()
@@ -75,6 +78,10 @@ namespace MoneyManager.ViewModels
             CurrentView = new BankOperationView();
         }
 
+        private void ShowDepositOperationView()
+        {
+            CurrentView = new DepositOperationView();
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)

@@ -17,6 +17,7 @@ namespace MoneyManager.ViewModels.BankOperations
         private BankOperation _selectedBankOperation;
         private ObservableCollection<Account> _accounts;
         private ObservableCollection<Subcategory> _subcategories;
+        private ObservableCollection<string> _operationTypes;
 
         public BankOperation SelectedBankOperation
         {
@@ -45,6 +46,16 @@ namespace MoneyManager.ViewModels.BankOperations
             {
                 _subcategories = value;
                 OnPropertyChanged(nameof(Subcategories));
+            }
+        }
+
+        public ObservableCollection<string> OperationTypes
+        {
+            get => _operationTypes;
+            set
+            {
+                _operationTypes = value;
+                OnPropertyChanged(nameof(OperationTypes));
             }
         }
 
@@ -77,6 +88,8 @@ namespace MoneyManager.ViewModels.BankOperations
 
             var subcategories = await _subcategoryRepository.GetAllAsync();
             Subcategories = new ObservableCollection<Subcategory>(subcategories);
+
+            OperationTypes = new ObservableCollection<string> { "пополнение", "снятие" };
         }
 
         protected virtual void OnPropertyChanged(string propertyName)
