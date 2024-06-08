@@ -160,6 +160,7 @@
     <Compile Include="Data\Repositories\Concrete\BankOperationRepository.cs" />
     <Compile Include="Data\Repositories\Concrete\CategoryRepository.cs" />
     <Compile Include="Data\Repositories\Concrete\CurrencyRepository.cs" />
+    <Compile Include="Data\Repositories\Concrete\DepositOperationRepository.cs" />
     <Compile Include="Data\Repositories\Concrete\DepositRepository.cs" />
     <Compile Include="Data\Repositories\Concrete\SubcategoryRepository.cs" />
     <Compile Include="Data\Repositories\Interfaces\IRepository.cs" />
@@ -172,6 +173,10 @@
     <Compile Include="ViewModels\BankOperations\EditBankOperationViewModel.cs" />
     <Compile Include="ViewModels\Categorys\AddCategoryViewModel.cs" />
     <Compile Include="ViewModels\Currencys\AddCurrencyViewModel.cs" />
+    <Compile Include="ViewModels\DepositOperations\AddDepositOperationViewModel.cs" />
+    <Compile Include="ViewModels\DepositOperations\DateRangeSelectionViewModel.cs" />
+    <Compile Include="ViewModels\DepositOperations\DepositOperationViewModel.cs" />
+    <Compile Include="ViewModels\DepositOperations\EditDepositOperationViewModel.cs" />
     <Compile Include="ViewModels\Deposits\AddDepositViewModel.cs" />
     <Compile Include="ViewModels\Categorys\CategoryViewModel.cs" />
     <Compile Include="ViewModels\Currencys\CurrencyViewModel.cs" />
@@ -208,6 +213,18 @@
     </Compile>
     <Compile Include="Views\Currencys\AddCurrencyView.xaml.cs">
       <DependentUpon>AddCurrencyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DepositOperations\AddDepositOperationView.xaml.cs">
+      <DependentUpon>AddDepositOperationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DepositOperations\DateRangeSelectionView.xaml.cs">
+      <DependentUpon>DateRangeSelectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DepositOperations\DepositOperationView.xaml.cs">
+      <DependentUpon>DepositOperationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DepositOperations\EditDepositOperationView.xaml.cs">
+      <DependentUpon>EditDepositOperationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Deposits\AddDepositView.xaml.cs">
       <DependentUpon>AddDepositView.xaml</DependentUpon>
@@ -267,6 +284,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Currencys\AddCurrencyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DepositOperations\AddDepositOperationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DepositOperations\DateRangeSelectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DepositOperations\DepositOperationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DepositOperations\EditDepositOperationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
