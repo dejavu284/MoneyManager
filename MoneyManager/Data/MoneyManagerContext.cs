@@ -145,6 +145,11 @@ namespace MoneyManager.Data
                     .HasColumnName("deposit_amount")
                     .HasColumnType("numeric(10,2)");
 
+                entity.Property(e => e.DepositName)
+                    .IsRequired()
+                    .HasColumnName("deposit_name")
+                    .HasColumnType("character varying");
+
                 entity.Property(e => e.EndDate)
                     .HasColumnName("end_date")
                     .HasColumnType("date");

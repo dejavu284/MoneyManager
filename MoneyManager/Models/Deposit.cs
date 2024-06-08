@@ -15,6 +15,7 @@ namespace MoneyManager.Models
         }
 
         public int DepositId { get; set; }
+        public string DepositName { get; set; }
         public decimal DepositAmount { get; set; }
         public decimal InterestRate { get; set; }
         public DateTime StartDate { get; set; }

@@ -20,21 +20,21 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Operation Amount:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" />
+        <TextBlock Text="Сумма операции:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" />
         <TextBox Text="{Binding NewBankOperation.OperationAmount}" Grid.Row="0" Grid.Column="1" Margin="10,2,0,2" />
 
-        <TextBlock Text="Operation Date:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" />
+        <TextBlock Text="Дата операции:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" />
         <DatePicker SelectedDate="{Binding NewBankOperation.OperationDate}" Grid.Row="1" Grid.Column="1" Margin="10,2,0,2" />
 
-        <TextBlock Text="Account:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" />
+        <TextBlock Text="Название счёта:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" />
         <ComboBox ItemsSource="{Binding Accounts}" SelectedItem="{Binding NewBankOperation.Account}" DisplayMemberPath="AccountName" Grid.Row="3" Grid.Column="1" Margin="10,2,0,2" />
 
-        <TextBlock Text="Type:" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" />
+        <TextBlock Text="Тип операции:" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" />
         <ComboBox ItemsSource="{Binding OperationTypes}" SelectedItem="{Binding NewBankOperation.OperationType}" Grid.Row="4" Grid.Column="1" Margin="10,2,0,2" />
 
-        <TextBlock Text="Subcategory:" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" />
+        <TextBlock Text="Подкатегория:" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" />
         <ComboBox ItemsSource="{Binding Subcategories}" SelectedItem="{Binding NewBankOperation.Subcategory}" DisplayMemberPath="SubcategoryName" Grid.Row="5" Grid.Column="1" Margin="10,2,0,2" />
 
-        <Button Content="Add BankOperation" Command="{Binding AddBankOperationCommand}" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10,10,10,0" />
+        <Button Content="Добавить операцию" Command="{Binding AddBankOperationCommand}" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10,10,10,0" />
     </Grid>
 </UserControl>

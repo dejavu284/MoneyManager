@@ -26,15 +26,15 @@
         <TextBlock Text="Operation Date:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" />
         <DatePicker SelectedDate="{Binding NewDepositOperation.OperationDate}" Grid.Row="1" Grid.Column="1" Margin="10,2,0,2" />
 
-        <TextBlock Text="Deposit:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" />
+        <TextBlock Text="Название вклада:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" />
         <ComboBox ItemsSource="{Binding Deposits}" SelectedItem="{Binding NewDepositOperation.Deposit}" DisplayMemberPath="DepositId" Grid.Row="3" Grid.Column="1" Margin="10,2,0,2" />
 
-        <TextBlock Text="Account:" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" />
+        <TextBlock Text="Название счёта:" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" />
         <ComboBox ItemsSource="{Binding Accounts}" SelectedItem="{Binding NewDepositOperation.Account}" DisplayMemberPath="AccountName" Grid.Row="4" Grid.Column="1" Margin="10,2,0,2" />
 
-        <TextBlock Text="Type:" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" />
+        <TextBlock Text="Тип операции:" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" />
         <ComboBox ItemsSource="{Binding OperationTypes}" SelectedItem="{Binding NewDepositOperation.OperationType}" Grid.Row="5" Grid.Column="1" Margin="10,2,0,2" />
 
-        <Button Content="Add Deposit Operation" Command="{Binding AddDepositOperationCommand}" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10,10,10,0" />
+        <Button Content="Добавить операцию" Command="{Binding AddDepositOperationCommand}" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10,10,10,0" />
     </Grid>
 </UserControl>
