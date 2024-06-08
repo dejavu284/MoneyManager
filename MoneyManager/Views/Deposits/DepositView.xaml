@@ -67,10 +67,10 @@
         </ListView>
 
         <!-- Кнопки управления -->
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="0,10,0,10" Width="300">
-            <Button Content="Add" Command="{Binding ShowAddDepositViewCommand}" Margin="5"/>
-            <Button Content="Edit" Command="{Binding EditDepositCommand}" Margin="5" IsEnabled="{Binding IsDepositSelected}"/>
-            <Button Content="Delete" Command="{Binding DeleteDepositCommand}" Margin="5" IsEnabled="{Binding IsDepositSelected}"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="0,10,0,10">
+            <Button Content="Создать вклад" Command="{Binding ShowAddDepositViewCommand}" Margin="5"/>
+            <Button Content="Изменить вклад" Command="{Binding EditDepositCommand}" Margin="5" IsEnabled="{Binding IsDepositSelected}"/>
+            <Button Content="Удалить вклад" Command="{Binding DeleteDepositCommand}" Margin="5" IsEnabled="{Binding IsDepositSelected}"/>
         </StackPanel>
 
         <!-- ContentControl для отображения AddDepositView -->

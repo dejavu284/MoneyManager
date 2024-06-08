@@ -66,10 +66,10 @@
         </ListView>
 
         <!-- Кнопки управления -->
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="0,10,0,10" Width="300">
-            <Button Content="Add" Command="{Binding ShowAddDepositOperationViewCommand}" Margin="5"/>
-            <Button Content="Edit" Command="{Binding EditDepositOperationCommand}" Margin="5" IsEnabled="{Binding IsDepositOperationSelected}"/>
-            <Button Content="Delete" Command="{Binding DeleteDepositOperationCommand}" Margin="5" IsEnabled="{Binding IsDepositOperationSelected}"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="0,10,0,10">
+            <Button Content="Перевод между своими счетами" Command="{Binding ShowAddDepositOperationViewCommand}" Margin="5"/>
+            <Button Content="Отредактировать перевод" Command="{Binding EditDepositOperationCommand}" Margin="5" IsEnabled="{Binding IsDepositOperationSelected}"/>
+            <Button Content="Удалить перевод из истории" Command="{Binding DeleteDepositOperationCommand}" Margin="5" IsEnabled="{Binding IsDepositOperationSelected}"/>
             <Button Content="Выбрать период" Command="{Binding ShowDateRangeSelectionViewCommand}" Margin="5"/>
         </StackPanel>
 

@@ -41,9 +41,9 @@
 
         <!-- Кнопки управления -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="0,10,0,10">
-            <Button Content="Add" Command="{Binding ShowAddCurrencyViewCommand}" Margin="5"/>
-            <Button Content="Edit" Command="{Binding EditCurrencyCommand}" Margin="5" IsEnabled="{Binding IsCurrencySelected}"/>
-            <Button Content="Delete" Command="{Binding DeleteCurrencyCommand}" Margin="5" IsEnabled="{Binding IsCurrencySelected}"/>
+            <Button Content="Создать валюту" Command="{Binding ShowAddCurrencyViewCommand}" Margin="5"/>
+            <Button Content="Изменить валюту" Command="{Binding EditCurrencyCommand}" Margin="5" IsEnabled="{Binding IsCurrencySelected}"/>
+            <Button Content="Удалить валюту" Command="{Binding DeleteCurrencyCommand}" Margin="5" IsEnabled="{Binding IsCurrencySelected}"/>
         </StackPanel>
 
         <!-- ContentControl для отображения AddCurrencyView -->
