@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Windows.Input;
 using System.Threading.Tasks;
 using System;
+using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace MoneyManager.ViewModels.Deposits
 {
@@ -12,7 +14,18 @@ namespace MoneyManager.ViewModels.Deposits
         private readonly DepositRepository _depositRepository;
         private readonly CurrencyRepository _currencyRepository;
         private Deposit _newDeposit;
-        private string _currencyCode;
+
+        private ObservableCollection<Currency> _currencies;
+
+        public ObservableCollection<Currency> Currencies
+        {
+            get => _currencies;
+            set
+            {
+                _currencies = value;
+                OnPropertyChanged(nameof(Currencies));
+            }
+        }
 
         public Deposit NewDeposit
         {
@@ -21,16 +34,6 @@ namespace MoneyManager.ViewModels.Deposits
             {
                 _newDeposit = value;
                 OnPropertyChanged(nameof(NewDeposit));
-            }
-        }
-
-        public string CurrencyCode
-        {
-            get => _currencyCode;
-            set
-            {
-                _currencyCode = value;
-                OnPropertyChanged(nameof(CurrencyCode));
             }
         }
 
@@ -47,23 +50,30 @@ namespace MoneyManager.ViewModels.Deposits
             };
 
             AddDepositCommand = new RelayCommand(async _ => await AddDeposit());
+
+            LoadData();
         }
 
         private async Task AddDeposit()
         {
-            var currency = await _currencyRepository.GetByCodeAsync(CurrencyCode);
-            if (currency != null)
+            if (NewDeposit.Currency != null)
             {
-                NewDeposit.CurrencyId = currency.CurrencyId;
+                NewDeposit.CurrencyId = NewDeposit.Currency.CurrencyId;
                 NewDeposit.Status = true;  // Активируем вклад при добавлении
                 await _depositRepository.AddAsync(NewDeposit);
                 DepositAdded?.Invoke(this, NewDeposit);
             }
             else
             {
-                // Обработка случая, когда валюта с указанным кодом не найдена
-                // Например, можно показать сообщение пользователю
+                // Обработка случая, когда валюта не выбрана
+                MessageBox.Show("Пожалуйста, выберите валюту.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private async void LoadData()
+        {
+            var currencies = await _currencyRepository.GetAllAsync();
+            Currencies = new ObservableCollection<Currency>(currencies);
         }
 
         public event EventHandler<Deposit> DepositAdded;
