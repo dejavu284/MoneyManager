@@ -12,7 +12,13 @@ namespace MoneyManager.Data.Repositories.Concrete
         public BankOperationRepository(MoneyManagerContext context) : base(context)
         {
         }
-
+        public override async Task<IEnumerable<BankOperation>> GetAllAsync()
+        {
+            return await _context.BankOperation
+                .Include(a => a.Subcategory)
+                .Include(a => a.Account)
+                .ToListAsync();
+        }
         public async Task<IEnumerable<BankOperation>> GetByAccountIdAsync(int accountId)
         {
             return await _context.BankOperation

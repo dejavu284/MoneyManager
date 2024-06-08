@@ -76,9 +76,7 @@ namespace MoneyManager.Data
 
                 entity.Property(e => e.AccountId).HasColumnName("account_id");
 
-                entity.Property(e => e.Description)
-                    .IsRequired()
-                    .HasColumnName("description");
+                entity.Property(e => e.Description).HasColumnName("description");
 
                 entity.Property(e => e.OperationAmount)
                     .HasColumnName("operation_amount")

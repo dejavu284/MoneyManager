@@ -73,7 +73,6 @@
         <!-- Панель навигации -->
         <StackPanel Grid.Column="0" Background="LightGray">
             <Button Content="Accounts" Command="{Binding ShowAccountViewCommand}"/>
-            <Button Content="Transactions" Command="{Binding ShowTransactionHistoryViewCommand}"/>
             <Button Content="Deposits" Command="{Binding ShowDepositViewCommand}"/>
             <Button Content="Categories" Command="{Binding ShowCategoryViewCommand}"/>
             <Button Content="Currencies" Command="{Binding ShowCurrencyViewCommand}"/>

@@ -2,18 +2,20 @@
 using MoneyManager.Data.Repositories.Concrete;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Windows.Input;
 using System.Configuration;
+using System.Windows.Input;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-using MoneyManager.Data;
 using System.Windows;
+using MoneyManager.Data;
 
 namespace MoneyManager.ViewModels.BankOperations
 {
     public class BankOperationViewModel : INotifyPropertyChanged
     {
         private readonly BankOperationRepository _bankOperationRepository;
+        private readonly AccountRepository _accountRepository;
+        private readonly SubcategoryRepository _subcategoryRepository;
         private ObservableCollection<BankOperation> _bankOperations;
         private BankOperation _selectedBankOperation;
         private object _currentViewModel;
@@ -59,6 +61,8 @@ namespace MoneyManager.ViewModels.BankOperations
         {
             var context = CreateDbContext();
             _bankOperationRepository = new BankOperationRepository(context);
+            _accountRepository = new AccountRepository(context);
+            _subcategoryRepository = new SubcategoryRepository(context);
 
             ShowAddBankOperationViewCommand = new RelayCommand(_ => ShowAddBankOperationView());
             EditBankOperationCommand = new RelayCommand(_ => ShowEditBankOperationView(), _ => IsBankOperationSelected);
@@ -86,7 +90,7 @@ namespace MoneyManager.ViewModels.BankOperations
 
         private void ShowAddBankOperationView()
         {
-            var addBankOperationViewModel = new AddBankOperationViewModel(_bankOperationRepository);
+            var addBankOperationViewModel = new AddBankOperationViewModel(_bankOperationRepository, _accountRepository, _subcategoryRepository);
             addBankOperationViewModel.BankOperationAdded += AddBankOperationViewModel_BankOperationAdded;
             CurrentViewModel = addBankOperationViewModel;
         }
@@ -99,7 +103,7 @@ namespace MoneyManager.ViewModels.BankOperations
 
         private void ShowEditBankOperationView()
         {
-            var editBankOperationViewModel = new EditBankOperationViewModel(_bankOperationRepository, SelectedBankOperation);
+            var editBankOperationViewModel = new EditBankOperationViewModel(_bankOperationRepository, _accountRepository, _subcategoryRepository, SelectedBankOperation);
             editBankOperationViewModel.BankOperationUpdated += EditBankOperationViewModel_BankOperationUpdated;
             CurrentViewModel = editBankOperationViewModel;
         }
@@ -139,4 +143,5 @@ namespace MoneyManager.ViewModels.BankOperations
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
+
 }

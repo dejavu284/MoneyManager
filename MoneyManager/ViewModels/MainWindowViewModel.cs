@@ -42,7 +42,7 @@ namespace MoneyManager.ViewModels
 
 
             // Set default view
-            ShowAccountView();
+            ShowBankOperationView();
         }
 
         private void ShowAccountView()
