@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MoneyManager.Data.Repositories.Interfaces
+namespace MoneyManager.Models.Interfaces
 {
     public interface IRepository<T> where T : class
     {

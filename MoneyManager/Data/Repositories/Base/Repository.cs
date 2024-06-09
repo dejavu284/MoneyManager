@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MoneyManager.Data.Repositories.Interfaces;
+using MoneyManager.Models.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

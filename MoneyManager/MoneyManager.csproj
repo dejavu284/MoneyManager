@@ -163,7 +163,7 @@
     <Compile Include="Data\Repositories\Concrete\DepositOperationRepository.cs" />
     <Compile Include="Data\Repositories\Concrete\DepositRepository.cs" />
     <Compile Include="Data\Repositories\Concrete\SubcategoryRepository.cs" />
-    <Compile Include="Data\Repositories\Interfaces\IRepository.cs" />
+    <Compile Include="Models\Interfaces\IRepository.cs" />
     <Compile Include="Models\BankOperation.cs" />
     <Compile Include="Models\Generators\AccountBuilder.cs" />
     <Compile Include="Models\Generators\CategoryBuilder.cs" />
@@ -433,11 +433,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Models\model_builder.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="ViewModels\ViewModelDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
