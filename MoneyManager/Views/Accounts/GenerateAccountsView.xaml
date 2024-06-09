@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="MoneyManager.Views.Accounts.GenerateAccountsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="400">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Количество счетов:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="5" />
+        <TextBox Text="{Binding NumberOfAccounts}" Grid.Row="0" Grid.Column="1" Margin="5" />
+
+        <TextBlock Text="Минимальная сумма:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="5" />
+        <TextBox Text="{Binding MinBalance}" Grid.Row="1" Grid.Column="1" Margin="5" />
+
+        <TextBlock Text="Максимальная сумма:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="5" />
+        <TextBox Text="{Binding MaxBalance}" Grid.Row="2" Grid.Column="1" Margin="5" />
+
+        <Button Content="Сгенерировать счета" Command="{Binding GenerateAccountsCommand}" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10" />
+    </Grid>
+</UserControl>

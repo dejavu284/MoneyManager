@@ -51,6 +51,7 @@ namespace MoneyManager.ViewModels.Currencys
 
         public bool IsCurrencySelected => SelectedCurrency != null;
 
+        public ICommand ShowGenerateCurrenciesViewCommand { get; }
         public ICommand ShowAddCurrencyViewCommand { get; }
         public ICommand EditCurrencyCommand { get; }
         public ICommand DeleteCurrencyCommand { get; }
@@ -60,6 +61,7 @@ namespace MoneyManager.ViewModels.Currencys
             var context = CreateDbContext();
             _currencyRepository = new CurrencyRepository(context);
 
+            ShowGenerateCurrenciesViewCommand = new RelayCommand(_ => ShowGenerateCurrenciesView());
             ShowAddCurrencyViewCommand = new RelayCommand(_ => ShowAddCurrencyView());
             EditCurrencyCommand = new RelayCommand(_ => ShowEditCurrencyView(), _ => IsCurrencySelected);
             DeleteCurrencyCommand = new RelayCommand(async _ => await DeleteCurrency(), _ => IsCurrencySelected);
@@ -82,6 +84,12 @@ namespace MoneyManager.ViewModels.Currencys
         {
             var currencies = await _currencyRepository.GetAllAsync();
             Currencies = new ObservableCollection<Currency>(currencies);
+        }
+
+        private void ShowGenerateCurrenciesView()
+        {
+            var generateCurrenciesViewModel = new GenerateCurrenciesViewModel(_currencyRepository, this);
+            CurrentViewModel = generateCurrenciesViewModel;
         }
 
         private void ShowAddCurrencyView()

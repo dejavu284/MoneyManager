@@ -28,6 +28,9 @@
         <DataTemplate DataType="{x:Type viewmodelsaccounts:EditAccountViewModel}">
             <local1:EditAccountView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodelsaccounts:GenerateAccountsViewModel}">
+            <local1:GenerateAccountsView />
+        </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodelsdeposits:AddDepositViewModel}">
             <local2:AddDepositView />
         </DataTemplate>
@@ -43,11 +46,17 @@
         <DataTemplate DataType="{x:Type viewmodelscategorys:EditCategoryViewModel}">
             <local3:EditCategoryView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodelscategorys:GenerateCategoriesViewModel}">
+            <local3:GenerateCategoriesView />
+        </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodelscurrencys:AddCurrencyViewModel}">
             <local4:AddCurrencyView />
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodelscurrencys:EditCurrencyViewModel}">
             <local4:EditCurrencyView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodelscurrencys:GenerateCurrenciesViewModel}">
+            <local4:GenerateCurrenciesView />
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodelssubcategories:AddSubcategoryViewModel}">
             <local5:AddSubcategoryView />

@@ -43,6 +43,7 @@
             <Button Content="Создать категорию" Command="{Binding ShowAddCategoryViewCommand}" Margin="5"/>
             <Button Content="Изменить категорию" Command="{Binding EditCategoryCommand}" Margin="5" IsEnabled="{Binding IsCategorySelected}"/>
             <Button Content="Удалить категорию" Command="{Binding DeleteCategoryCommand}" Margin="5" IsEnabled="{Binding IsCategorySelected}"/>
+            <Button Content="Сгенерировать категории" Command="{Binding ShowGenerateCategoriesViewCommand}" Margin="5"/>
         </StackPanel>
 
         <!-- ContentControl для отображения AddCategoryView -->

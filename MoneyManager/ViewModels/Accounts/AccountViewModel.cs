@@ -1,12 +1,13 @@
-﻿using MoneyManager.Models;
-using MoneyManager.Data.Repositories.Concrete;
+﻿using MoneyManager.Data.Repositories.Concrete;
+using MoneyManager.Models;
+using MoneyManager.ViewModels.Accounts;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Windows.Input;
 using System.Configuration;
-using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
+using Microsoft.EntityFrameworkCore;
 using MoneyManager.Data;
 
 namespace MoneyManager.ViewModels.Accounts
@@ -55,6 +56,7 @@ namespace MoneyManager.ViewModels.Accounts
         public ICommand ShowAddAccountViewCommand { get; }
         public ICommand EditAccountCommand { get; }
         public ICommand DeleteAccountCommand { get; }
+        public ICommand ShowGenerateAccountsViewCommand { get; }
 
         public AccountViewModel()
         {
@@ -65,6 +67,7 @@ namespace MoneyManager.ViewModels.Accounts
             ShowAddAccountViewCommand = new RelayCommand(_ => ShowAddAccountView());
             EditAccountCommand = new RelayCommand(_ => ShowEditAccountView(), _ => IsAccountSelected);
             DeleteAccountCommand = new RelayCommand(async _ => await DeleteAccount(), _ => IsAccountSelected);
+            ShowGenerateAccountsViewCommand = new RelayCommand(_ => ShowGenerateAccountsView());
 
             LoadAccounts();
 
@@ -133,6 +136,12 @@ namespace MoneyManager.ViewModels.Accounts
                     OnPropertyChanged(nameof(IsAccountSelected));
                 }
             }
+        }
+
+        private void ShowGenerateAccountsView()
+        {
+            var generateAccountsViewModel = new GenerateAccountsViewModel(_accountRepository, _currencyRepository, this);
+            CurrentViewModel = generateAccountsViewModel;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

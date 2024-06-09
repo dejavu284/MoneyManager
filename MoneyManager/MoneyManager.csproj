@@ -165,15 +165,21 @@
     <Compile Include="Data\Repositories\Concrete\SubcategoryRepository.cs" />
     <Compile Include="Data\Repositories\Interfaces\IRepository.cs" />
     <Compile Include="Models\BankOperation.cs" />
+    <Compile Include="Models\Generators\AccountBuilder.cs" />
+    <Compile Include="Models\Generators\CategoryBuilder.cs" />
+    <Compile Include="Models\Generators\CurrencyBuilder.cs" />
     <Compile Include="Models\Generators\DepositBuilder.cs" />
     <Compile Include="ViewModels\Accounts\AccountViewModel.cs" />
     <Compile Include="ViewModels\Accounts\AddAccountViewModel.cs" />
+    <Compile Include="ViewModels\Accounts\GenerateAccountsViewModel.cs" />
     <Compile Include="ViewModels\BankOperations\AddBankOperationViewModel.cs" />
     <Compile Include="ViewModels\BankOperations\BankOperationViewModel.cs" />
     <Compile Include="ViewModels\BankOperations\DateRangeSelectionViewModel.cs" />
     <Compile Include="ViewModels\BankOperations\EditBankOperationViewModel.cs" />
     <Compile Include="ViewModels\Categorys\AddCategoryViewModel.cs" />
+    <Compile Include="ViewModels\Categorys\GenerateCategoriesViewModel.cs" />
     <Compile Include="ViewModels\Currencys\AddCurrencyViewModel.cs" />
+    <Compile Include="ViewModels\Currencys\GenerateCurrenciesViewModel.cs" />
     <Compile Include="ViewModels\DepositOperations\AddDepositOperationViewModel.cs" />
     <Compile Include="ViewModels\DepositOperations\DateRangeSelectionViewModel.cs" />
     <Compile Include="ViewModels\DepositOperations\DepositOperationViewModel.cs" />
@@ -198,6 +204,9 @@
     <Compile Include="Views\Accounts\AddAccountView.xaml.cs">
       <DependentUpon>AddAccountView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Accounts\GenerateAccountsView.xaml.cs">
+      <DependentUpon>GenerateAccountsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\BankOperations\AddBankOperationView.xaml.cs">
       <DependentUpon>AddBankOperationView.xaml</DependentUpon>
     </Compile>
@@ -213,8 +222,14 @@
     <Compile Include="Views\Categorys\AddCategoryView.xaml.cs">
       <DependentUpon>AddCategoryView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Categorys\GenerateCategoriesView.xaml.cs">
+      <DependentUpon>GenerateCategoriesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Currencys\AddCurrencyView.xaml.cs">
       <DependentUpon>AddCurrencyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Currencys\GenerateCurrenciesView.xaml.cs">
+      <DependentUpon>GenerateCurrenciesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DepositOperations\AddDepositOperationView.xaml.cs">
       <DependentUpon>AddDepositOperationView.xaml</DependentUpon>
@@ -268,6 +283,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Accounts\GenerateAccountsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\BankOperations\AddBankOperationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -288,7 +307,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Categorys\GenerateCategoriesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Currencys\AddCurrencyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Currencys\GenerateCurrenciesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

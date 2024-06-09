@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Windows;
 using MoneyManager.Data;
+using MoneyManager.ViewModels.Categorys;
 
 namespace MoneyManager.ViewModels.Categorys
 {
@@ -51,6 +52,7 @@ namespace MoneyManager.ViewModels.Categorys
 
         public bool IsCategorySelected => SelectedCategory != null;
 
+        public ICommand ShowGenerateCategoriesViewCommand { get; }
         public ICommand ShowAddCategoryViewCommand { get; }
         public ICommand EditCategoryCommand { get; }
         public ICommand DeleteCategoryCommand { get; }
@@ -60,6 +62,7 @@ namespace MoneyManager.ViewModels.Categorys
             var context = CreateDbContext();
             _categoryRepository = new CategoryRepository(context);
 
+            ShowGenerateCategoriesViewCommand = new RelayCommand(_ => ShowGenerateCategoriesView());
             ShowAddCategoryViewCommand = new RelayCommand(_ => ShowAddCategoryView());
             EditCategoryCommand = new RelayCommand(_ => ShowEditCategoryView(), _ => IsCategorySelected);
             DeleteCategoryCommand = new RelayCommand(async _ => await DeleteCategory(), _ => IsCategorySelected);
@@ -82,6 +85,12 @@ namespace MoneyManager.ViewModels.Categorys
         {
             var categories = await _categoryRepository.GetAllAsync();
             Categories = new ObservableCollection<Category>(categories);
+        }
+
+        private void ShowGenerateCategoriesView()
+        {
+            var generateCategoriesViewModel = new GenerateCategoriesViewModel(_categoryRepository, this);
+            CurrentViewModel = generateCategoriesViewModel;
         }
 
         private void ShowAddCategoryView()

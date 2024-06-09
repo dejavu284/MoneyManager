@@ -56,6 +56,7 @@
             <Button Content="Создать счёт" Command="{Binding ShowAddAccountViewCommand}" Margin="5"/>
             <Button Content="Изменить счёт" Command="{Binding EditAccountCommand}" Margin="5" IsEnabled="{Binding IsAccountSelected}"/>
             <Button Content="Удалить счёт" Command="{Binding DeleteAccountCommand}" Margin="5" IsEnabled="{Binding IsAccountSelected}"/>
+            <Button Content="Сгенерировать" Command="{Binding ShowGenerateAccountsViewCommand}" Margin="5"/>
         </StackPanel>
 
         <!-- ContentControl для отображения AddAccountView -->

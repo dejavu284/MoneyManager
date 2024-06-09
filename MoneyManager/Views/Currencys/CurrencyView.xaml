@@ -43,6 +43,7 @@
             <Button Content="Создать валюту" Command="{Binding ShowAddCurrencyViewCommand}" Margin="5"/>
             <Button Content="Изменить валюту" Command="{Binding EditCurrencyCommand}" Margin="5" IsEnabled="{Binding IsCurrencySelected}"/>
             <Button Content="Удалить валюту" Command="{Binding DeleteCurrencyCommand}" Margin="5" IsEnabled="{Binding IsCurrencySelected}"/>
+            <Button Content="Сгенерировать валюты" Command="{Binding ShowGenerateCurrenciesViewCommand}" Margin="5"/>
         </StackPanel>
 
         <!-- ContentControl для отображения AddCurrencyView -->
