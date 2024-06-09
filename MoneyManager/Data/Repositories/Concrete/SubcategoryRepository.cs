@@ -20,5 +20,15 @@ namespace MoneyManager.Data.Repositories.Concrete
                 .Where(c => c.Status)
                 .ToListAsync();
         }
+        public override async Task DeleteAsync(int id)
+        {
+            var subcategory = await _context.Subcategory.FindAsync(id);
+            if (subcategory != null)
+            {
+                subcategory.Status = false;
+                await _context.SaveChangesAsync();
+            }
+        }
+
     }
 }

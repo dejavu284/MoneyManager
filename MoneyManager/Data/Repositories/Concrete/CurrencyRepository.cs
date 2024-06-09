@@ -24,5 +24,14 @@ namespace MoneyManager.Data.Repositories.Concrete
         {
             return await _context.Currency.FirstOrDefaultAsync(c => c.CurrencyCode == code);
         }
+        public override async Task DeleteAsync(int id)
+        {
+            var currency = await _context.Currency.FindAsync(id);
+            if (currency != null)
+            {
+                currency.Status = false;
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }
