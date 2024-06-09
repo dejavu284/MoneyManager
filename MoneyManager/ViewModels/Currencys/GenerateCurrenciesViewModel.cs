@@ -55,8 +55,7 @@ namespace MoneyManager.ViewModels.Currencys
 
                     await _currencyRepository.AddAsync(currency);
 
-                    // Обновляем коллекцию валют в UI-потоке
-                    Application.Current.Dispatcher.Invoke(() =>
+                    Application.Current?.Dispatcher.Invoke(() =>
                     {
                         _parentViewModel.Currencies.Add(currency);
                     });

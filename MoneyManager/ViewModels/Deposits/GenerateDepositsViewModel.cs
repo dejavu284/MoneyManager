@@ -131,8 +131,7 @@ namespace MoneyManager.ViewModels.Deposits
 
                         await _depositRepository.AddAsync(deposit);
 
-                        // Обновляем коллекцию вкладов в UI-потоке
-                        Application.Current.Dispatcher.Invoke(() =>
+                        Application.Current?.Dispatcher.Invoke(() =>
                         {
                             _parentViewModel.Deposits.Add(deposit);
                         });

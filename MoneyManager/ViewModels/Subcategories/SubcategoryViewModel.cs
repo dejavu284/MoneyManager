@@ -15,17 +15,17 @@ namespace MoneyManager.ViewModels.Subcategories
     {
         private readonly SubcategoryRepository _subcategoryRepository;
         private readonly CategoryRepository _categoryRepository;
-        private ObservableCollection<Subcategory> _subcategorys;
+        private ObservableCollection<Subcategory> _subcategories;
         private Subcategory _selectedSubcategory;
         private object _currentViewModel;
 
-        public ObservableCollection<Subcategory> Subcategorys
+        public ObservableCollection<Subcategory> Subcategories
         {
-            get => _subcategorys;
+            get => _subcategories;
             set
             {
-                _subcategorys = value;
-                OnPropertyChanged(nameof(Subcategorys));
+                _subcategories = value;
+                OnPropertyChanged(nameof(Subcategories));
             }
         }
 
@@ -55,6 +55,7 @@ namespace MoneyManager.ViewModels.Subcategories
         public ICommand ShowAddSubcategoryViewCommand { get; }
         public ICommand EditSubcategoryCommand { get; }
         public ICommand DeleteSubcategoryCommand { get; }
+        public ICommand ShowGenerateSubcategoriesViewCommand { get; }
 
         public SubcategoryViewModel()
         {
@@ -65,8 +66,9 @@ namespace MoneyManager.ViewModels.Subcategories
             ShowAddSubcategoryViewCommand = new RelayCommand(_ => ShowAddSubcategoryView());
             EditSubcategoryCommand = new RelayCommand(_ => ShowEditSubcategoryView(), _ => IsSubcategorySelected);
             DeleteSubcategoryCommand = new RelayCommand(async _ => await DeleteSubcategory(), _ => IsSubcategorySelected);
+            ShowGenerateSubcategoriesViewCommand = new RelayCommand(_ => ShowGenerateSubcategoriesView());
 
-            LoadSubcategorys();
+            LoadSubcategories();
 
             // Set default view
             CurrentViewModel = null;
@@ -80,10 +82,10 @@ namespace MoneyManager.ViewModels.Subcategories
             return new MoneyManagerContext(optionsBuilder.Options);
         }
 
-        private async void LoadSubcategorys()
+        private async void LoadSubcategories()
         {
-            var subcategorys = await _subcategoryRepository.GetAllAsync();
-            Subcategorys = new ObservableCollection<Subcategory>(subcategorys);
+            var subcategories = await _subcategoryRepository.GetAllAsync();
+            Subcategories = new ObservableCollection<Subcategory>(subcategories);
         }
 
         private void ShowAddSubcategoryView()
@@ -93,9 +95,15 @@ namespace MoneyManager.ViewModels.Subcategories
             CurrentViewModel = addSubcategoryViewModel;
         }
 
+        private void ShowGenerateSubcategoriesView()
+        {
+            var generateSubcategoriesViewModel = new GenerateSubcategoriesViewModel(_subcategoryRepository, _categoryRepository, this);
+            CurrentViewModel = generateSubcategoriesViewModel;
+        }
+
         private void AddSubcategoryViewModel_SubcategoryAdded(object sender, Subcategory e)
         {
-            Subcategorys.Add(e);
+            Subcategories.Add(e);
             CurrentViewModel = null;
         }
 
@@ -108,12 +116,12 @@ namespace MoneyManager.ViewModels.Subcategories
 
         private void EditSubcategoryViewModel_SubcategoryUpdated(object sender, Subcategory e)
         {
-            var index = Subcategorys.IndexOf(SelectedSubcategory);
+            var index = Subcategories.IndexOf(SelectedSubcategory);
             if (index >= 0)
             {
-                Subcategorys[index] = e;
+                Subcategories[index] = e;
                 SelectedSubcategory = e;
-                OnPropertyChanged(nameof(Subcategorys));
+                OnPropertyChanged(nameof(Subcategories));
             }
             CurrentViewModel = null;
         }
@@ -127,9 +135,8 @@ namespace MoneyManager.ViewModels.Subcategories
 
                 if (result == MessageBoxResult.Yes)
                 {
-                    SelectedSubcategory.Status = false;
-                    await _subcategoryRepository.UpdateAsync(SelectedSubcategory);
-                    Subcategorys.Remove(SelectedSubcategory);
+                    await _subcategoryRepository.DeleteAsync(SelectedSubcategory.SubcategoryId);
+                    Subcategories.Remove(SelectedSubcategory);
                     SelectedSubcategory = null;
                     OnPropertyChanged(nameof(IsSubcategorySelected));
                 }

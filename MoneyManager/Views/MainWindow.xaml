@@ -64,6 +64,9 @@
         <DataTemplate DataType="{x:Type viewmodelssubcategories:EditSubcategoryViewModel}">
             <local5:EditSubcategoryView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodelssubcategories:GenerateSubcategoriesViewModel}">
+            <local5:GenerateSubcategoriesView />
+        </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodelssubcategories:SubcategoryViewModel}">
             <local5:SubcategoryView />
         </DataTemplate>

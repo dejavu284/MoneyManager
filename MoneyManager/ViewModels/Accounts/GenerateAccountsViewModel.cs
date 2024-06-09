@@ -89,7 +89,7 @@ namespace MoneyManager.ViewModels.Accounts
                     await _accountRepository.AddAsync(account);
 
                     // Обновляем коллекцию счетов в UI-потоке
-                    Application.Current.Dispatcher.Invoke(() =>
+                    Application.Current?.Dispatcher.Invoke(() =>
                     {
                         _parentViewModel.Accounts.Add(account);
                     });

@@ -52,7 +52,7 @@ namespace MoneyManager.ViewModels.Categorys
                     await _categoryRepository.AddAsync(category);
 
                     // Обновляем коллекцию категорий в UI-потоке
-                    Application.Current.Dispatcher.Invoke(() =>
+                    Application.Current?.Dispatcher.Invoke(() =>
                     {
                         _parentViewModel.Categories.Add(category);
                     });

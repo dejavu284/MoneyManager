@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <!-- Список подкатегорий -->
-        <ListView ItemsSource="{Binding Subcategorys}" SelectedItem="{Binding SelectedSubcategory}" Grid.Column="0" Grid.Row="0" HorizontalContentAlignment="Center">
+        <ListView ItemsSource="{Binding Subcategories}" SelectedItem="{Binding SelectedSubcategory}" Grid.Column="0" Grid.Row="0" HorizontalContentAlignment="Center">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -48,7 +48,8 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="0,10,0,10">
             <Button Content="Создать подкатегорию" Command="{Binding ShowAddSubcategoryViewCommand}" Margin="5"/>
             <Button Content="Изменить подкатегорию" Command="{Binding EditSubcategoryCommand}" Margin="5" IsEnabled="{Binding IsSubcategorySelected}"/>
-            <Button Content="Удилить подкатегорию" Command="{Binding DeleteSubcategoryCommand}" Margin="5" IsEnabled="{Binding IsSubcategorySelected}"/>
+            <Button Content="Удалить подкатегорию" Command="{Binding DeleteSubcategoryCommand}" Margin="5" IsEnabled="{Binding IsSubcategorySelected}"/>
+            <Button Content="Сгенерировать подкатегории" Command="{Binding ShowGenerateSubcategoriesViewCommand}" Margin="5"/>
         </StackPanel>
 
         <!-- ContentControl для отображения AddSubcategoryView -->
